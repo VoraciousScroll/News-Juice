@@ -1,5 +1,5 @@
 angular.module('smartNews.home', [])
 
-.controller(function($scope) {
-
+.controller('HomeCtrl', function($scope) {
+  $scope.test = 'hello';
 });

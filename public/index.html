@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="smartNews">
 <head>
   <meta charset="UTF-8">
-  <title>News Dudes</title>
+  <title>Smart News</title>
 
   <!-- Styles -->
 
 
   <!-- Scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-  <script src="./index.js"></script>
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+  <script src="features/home/home.js"></script>
+  <script src="index.js"></script>
 </head>
 <body>
+
+  <div ui-view></div>
 
 </body>
 </html>
