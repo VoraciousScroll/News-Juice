@@ -1,4 +1,4 @@
-# Smart News #
+# SmartNews #
  
 ## Analyze large-scale news content in real-time. ##
 
