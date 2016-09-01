@@ -21,4 +21,8 @@ angular.module('smartNews', [
 
   $urlRouterProvider.otherwise('/');
 
+})
+
+.controller('MainCtrl', function($scope){
+
 });

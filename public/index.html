@@ -5,6 +5,8 @@
   <title>Smart News</title>
 
   <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
 
 
   <!-- Scripts -->
@@ -14,8 +16,16 @@
   <script src="index.js"></script>
 </head>
 <body>
+  <h1>Smart News</h1>
+
+  <!-- Search Box -->
+  <div class="main container" ng-controller="MainCtrl">
+    <div class="input-group-lg">
+      <input type="text" class="searchbar form-control" placeholder="Enter Search Keyword">
+    </div>
+  </div>
+
 
   <div ui-view></div>
-
 </body>
 </html>
