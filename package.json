@@ -1,0 +1,25 @@
+{
+  "name": "voracious_scroll",
+  "version": "1.0.0",
+  "description": "news app",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VoraciousScroll/VoraciousScroll"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VoraciousScroll/VoraciousScroll/issues"
+  },
+  "homepage": "https://github.com/VoraciousScroll/VoraciousScroll#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.10"
+  }
+}

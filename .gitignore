@@ -1,0 +1,15 @@
+
+###OSX###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Node
+node_modules
+npm-debug.log
+
+# Floobits
+.floo
+.floobit
+.flooignore
