@@ -16,29 +16,20 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+## Analyze large-scale news content in real-time. ##
 
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+## SmartNews is for discerning readers who want the big picture on demand. ##
 
-## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+## Have you ever seen a trending news article or noticed a sudden increase in the appearance of a certain topic? Have you ever wondered when this got started, and how it started? What's behind the sudden rise in certain stock values? SmartNews is here to give you the answers. Easily learn what is trending in your area, and see what topics are often related. SmartNews is here to give you the data you need, when you need it. ##
 
-## Problem ##
-  > Describe the problem your product solves.
+## People everywhere are seeing their news from the same limited news sources day in and day out. They have no way of seeing the bigger picture. ##
 
-## Solution ##
-  > Describe how your product elegantly solves the problem.
+## With SmartNews, that picture is just a click away. Customize your query and watch as results are arranged before your eyes. ##
 
-## Quote from You ##
-  > A quote from a spokesperson in your company.
+## "SmartNews is at the cutting edge of a new age in transparency. For the first time, people have access to all the data in one place." ##
 
-## How to Get Started ##
-  > Describe how easy it is to get started.
+## Just head to SmartNews.com to get started. ##
 
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+## "I used to wonder about how my news fit into the bigger picture. Not anymore. Thanks, SmartNews! ##
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+## To see the big picture yourself, head to SmartNews.com and get started today.##
