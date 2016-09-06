@@ -1,3 +1,3 @@
-module.exports = function() {
-  app.use(express.static('/../public'));
+module.exports = function(app, express) {
+  app.use(express.static(__dirname + '/../public'));
 }
