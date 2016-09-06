@@ -1,3 +1,7 @@
-module.exports = function(){
-  
-}
+var passport = require('passport');
+
+module.exports = {
+  passport: function() {
+    
+  }
+};
