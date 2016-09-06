@@ -1,6 +1,7 @@
 angular.module('smartNews', [
   'ui.router',
-  'smartNews.home'
+  'smartNews.home',
+  'smartNews.results'
 ])
 .config(function($urlRouterProvider, $stateProvider) {
 
@@ -9,6 +10,13 @@ angular.module('smartNews', [
       url: '/',
       templateUrl: 'features/home/home.html',
       controller: 'HomeCtrl',
+      authenticate: false
+    })
+
+    .state('results', {
+      url: '/results',
+      templateUrl: 'features/results/results.html',
+      controller: 'ResultsCtrl',
       authenticate: false
     });
 
@@ -23,6 +31,7 @@ angular.module('smartNews', [
 
 })
 
-.controller('MainCtrl', function($scope){
+.controller('SearchCtrl', function($scope){
+  $scope.searchinput = '';
 
 });
