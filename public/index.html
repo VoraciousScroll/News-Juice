@@ -19,13 +19,11 @@
   <h1>News Juice</h1>
 
   <!-- Search Box -->
-  <div class="main container" ng-controller="MainCtrl">
+  <div class="main container" ng-controller="SearchCtrl">
     <div class="input-group-lg">
-      <input type="text" class="searchbar form-control" placeholder="Enter Search Keyword">
+      <input type="text" class="searchbar form-control" ng-model="searchinput" placeholder="Enter Search Keyword">
     </div>
   </div>
-
-
-  <div ui-view></div>
+  <div class="container" ui-view></div>
 </body>
 </html>
