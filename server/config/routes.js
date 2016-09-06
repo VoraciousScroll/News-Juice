@@ -1,5 +1,5 @@
 module.exports = function(app, express) {
-  
+
   // These take the AJAX requests from the client and call the matching function in the second parameter.
   app.get('/home', searchController.handleHomeGet);
   app.post('/home', searchController.handleHomePost);
@@ -9,5 +9,5 @@ module.exports = function(app, express) {
     console.error(err.stack);
     res.status(500).send('Something broke!');
   });
-  
+
 };

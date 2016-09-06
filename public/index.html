@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="smartNews">
 <head>
   <meta charset="UTF-8">
-  <title>News Dudes</title>
+  <title>Smart News</title>
 
   <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/style.css">
 
 
   <!-- Scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-  <script src="./index.js"></script>
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+  <script src="features/home/home.js"></script>
+  <script src="index.js"></script>
 </head>
 <body>
+  <h1>News Juice</h1>
 
+  <!-- Search Box -->
+  <div class="main container" ng-controller="MainCtrl">
+    <div class="input-group-lg">
+      <input type="text" class="searchbar form-control" placeholder="Enter Search Keyword">
+    </div>
+  </div>
+
+
+  <div ui-view></div>
 </body>
 </html>

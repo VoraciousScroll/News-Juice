@@ -1,0 +1,15 @@
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|Yatra+One';
+
+h1 {
+  font-family: 'Playfair Display SC', serif;
+  text-align: center;
+}
+
+.main.container {
+  margin: 30px;
+}
+
+/*Search Bar*/
+.searchbar.form-control {
+  border-radius: 0
+}
