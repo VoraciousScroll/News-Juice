@@ -1,26 +1,37 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/voraciousscroll');
 var Schema = mongoose.Schema;
+var util = require('./helperFunctions');
 
 var userSchema = new Schema({
+  _facebookUniqueID: String,
   firstname: String,
   lastname: String,
-  _facebookUniqueID: String
+  picture: String,
+  gender: String
 });
 
-userSchema.statics.findOrCreate = function(profile, callback) {
-  var userObj = new this();
-  this.findOne({_facebookUniqueID: profile.id}, function (error, result) {
-    if (!result) {
-      userObj.firstname = profile.name.givenName;
-      userObj.lastname = profile.name.familyName;
-      userObj.facebookUniqueID = profile.id;
+var User = mongoose.model('User', userSchema);
+
+User.findOrCreateUser = function(profile, callback) {
+  User.findOne({_facebookUniqueID: profile.id}, function (error, user) {
+    if (error) {
+      console.log('ERROR: ', error);
+      callback(error);
+    } else if (!user) {
+      User.create(util.profile(profile), function(error, user) {
+        if (error) {
+          console.log('ERROR: ', error);
+          callback(error);
+        } else {
+          console.log('Success added new user: ', user);
+          callback(null, user);
+        }
+      });
     } else {
-      callback (error, result);
-    }
+      callback(null, user);
+    } 
   });
 };
-
-var User = mongoose.model('User', userSchema);
 
 exports.User = User;
