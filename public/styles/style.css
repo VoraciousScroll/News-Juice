@@ -6,7 +6,7 @@ h1 {
 }
 
 .main.container {
-  margin: 30px;
+  margin: 30px auto;
 }
 
 /*Search Bar*/
