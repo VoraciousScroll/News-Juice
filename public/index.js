@@ -37,7 +37,7 @@ angular.module('smartNews', [
       .then(
         function(obj){
           console.log('obj:', obj);
-          $state.go('results', {input: obj.data});
+          $state.go('results', {input: JSON.stringify(obj.data)});
         },
         function(error){
           console.log('there was an error!!', error);

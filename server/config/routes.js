@@ -4,7 +4,7 @@ var routes = require('express').Router();
 
 module.exports = function(app, express) {
 
-  callAylienAPI = function(res) {
+  callAylienAPI = function(terms, res) {
     var AylienNewsApi = require('aylien-news-api');
     var apiInstance = new AylienNewsApi.DefaultApi();
 
@@ -16,15 +16,15 @@ module.exports = function(app, express) {
     var app_key = apiInstance.apiClient.authentications['app_key'];
     app_key.apiKey = "da0d3014450a578285e457a39e5f641a";
     var opts = {
-      'title': 'trump',
+      'title': terms,
       'sortBy': 'social_shares_count.facebook',
       'language': ['en'],
       'publishedAtStart': 'NOW-7DAYS',
       'publishedAtEnd': 'NOW',
-      'entitiesBodyLinksDbpedia': [
-        'http://dbpedia.org/resource/Donald_Trump',
-        'http://dbpedia.org/resource/Hillary_Rodham_Clinton'
-      ]
+      // 'entitiesBodyLinksDbpedia': [
+      //   'http://dbpedia.org/resource/Donald_Trump',
+      //   'http://dbpedia.org/resource/Hillary_Rodham_Clinton'
+      // ]
     };
     var callback = function(error, data, response) {
       if (error) {
@@ -51,17 +51,24 @@ module.exports = function(app, express) {
     res.send('Get received on server.js from "/alpha".');
   })
 
-  app.route('/trump')
+  app.route('/search')
     .get(function(req, res) {
-      console.log('Received get on /trump from app.route on routes.js');
-      // res.send('Received get on /trump from app.route on routes.js');
-      callAylienAPI(res);
+      console.log('Received get on /search from app.route on routes.js');
+      // res.send('Received get on /search from app.route on routes.js');
+      callAylienAPI('cats', res);
     })
 
-  app.route('/:gamma')
+  app.route('/results/:input')
     .get(function(req, res) {
-      console.log('Received get on /:gamma from app.route on routes.js');
-      res.send('Received get on /:gamma from app.route on routes.js');
+      console.log('Received get on /results/:input from app.route on routes.js');
+      // res.send('Received get on /search from app.route on routes.js');
+      callAylienAPI('cats', res);
+    })
+
+  app.route('/:input')
+    .get(function(req, res) {
+      console.log('Received get on /:input from app.route on routes.js. req:', req.params.input, req.params);
+      callAylienAPI(req.params.input, res);
     })
 
   // app.get('/home', searchController.handleHomeGet);
