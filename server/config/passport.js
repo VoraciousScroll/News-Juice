@@ -19,12 +19,20 @@ passport.use(new FacebookStrategy({
       if (error) {
         return done(error);
       } else {
+        console.log(user, 'USER RECEIEVED in PASSPORT FILE');
         done(null, user);
       }
     });
   })
 );
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 
 module.exports = passport;
