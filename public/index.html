@@ -4,20 +4,26 @@
   <meta charset="UTF-8">
   <title>Smart News</title>
 
-  <!-- Styles -->
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <!-- Styles, indented for easier hide/show -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
 
+  <!-- Scripts, indented for easier hide/show-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="features/results/results.js"></script>
+    <script src="features/home/home.js"></script>
+    <script src="features/home/chart.js"></script>
+    <script src="features/home/trends.js"></script>
+    <script src="features/home/news.js"></script>
+    <script src="index.js"></script>
+    <script src="features/nav/nav.js"></script>
+  <!-- // Scripts -->
 
-  <!-- Scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
-  <script src="features/results/results.js"></script>
-  <script src="features/home/home.js"></script>
-  <script src="index.js"></script>
 </head>
 <body>
+  <navbar></navbar>
   <h1>News Juice</h1>
 
   <!-- Search Box -->

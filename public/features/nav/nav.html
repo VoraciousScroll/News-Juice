@@ -1,0 +1,20 @@
+<nav class="navbar navbar-static-top">
+
+  <!-- Unauthenticated View -->
+  <div class="container" ng-hide="user">
+    <p class="navbar-text navbar-right">
+
+      <a href="/auth/facebook" class="navbar-link">
+      Log in with Facebook
+      </a>
+    </p>
+  </div>
+
+  <!-- Authenticated View -->
+  <div class="container" ng-show="user">
+    <p class="navbar-text navbar-right">
+      Signed in as {{user}}
+    </p>
+  </div>
+
+</nav>

@@ -3,6 +3,7 @@ angular.module('smartNews', [
   'smartNews.home',
   'smartNews.results'
 ])
+
 .config(function($urlRouterProvider, $stateProvider) {
 
   $stateProvider
@@ -48,4 +49,11 @@ angular.module('smartNews', [
     }
   };
 
+})
+
+.directive('navbar', function(){
+  return {
+    templateUrl: 'features/nav/nav.html',
+    controller: 'NavCtrl'
+  };
 });
