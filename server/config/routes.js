@@ -2,9 +2,33 @@ var app = require('../server.js');
 var routes = require('express').Router();
 var passport = require('./passport.js');
 
-// var searchController = require('../search/searchController');
-
 module.exports = function(app, express) {
+
+/**************** USER AUTH FACEBOOK *****************/
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  app.get('/auth/facebook', 
+    passport.authenticate('facebook'));
+
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+      function(req, res) {
+      // Successful authentication, redirect home.
+        console.log(req.session, 'REQUEST SESSION');
+        console.log(req.session.passport, 'REQUEST session');
+        res.redirect('/');
+      });
+
+  /************* AYLIEN API ROUTES ********************/
+
+
+  // These take the AJAX requests from the client and call the matching function in the second parameter.
+
+  // app.get('/', function(req, res) {
+  //   console.log('Get received on server.js from "/".');
+  //   res.send('Get received on server.js from "/".');
+  // })
 
   callAylienAPI = function(terms, res) {
     var AylienNewsApi = require('aylien-news-api');
@@ -39,59 +63,31 @@ module.exports = function(app, express) {
     apiInstance.listStories(opts, callback);
   };
 
-  // These take the AJAX requests from the client and call the matching function in the second parameter.
-
-  // app.get('/', function(req, res) {
-  //   console.log('Get received on server.js from "/".');
-  //   res.send('Get received on server.js from "/".');
-  // })
-
-
-  /************ USER AUTH FACEBOOK **************/
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  app.get('/auth/facebook', 
-    passport.authenticate('facebook'));
-
-  app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/login' }),
-      function(req, res) {
-      // Successful authentication, redirect home.
-        res.redirect('/');
-      });
-
-
-
-
-
-
-  // app.use('/', express.static('public'));
 
   app.get('/alpha', function(req, res) {
     console.log('Get received on server.js from "/alpha".');
     res.send('Get received on server.js from "/alpha".');
-  })
+  });
 
   app.route('/search')
     .get(function(req, res) {
       console.log('Received get on /search from app.route on routes.js');
       // res.send('Received get on /search from app.route on routes.js');
       callAylienAPI('cats', res);
-    })
+    });
 
   app.route('/results/:input')
     .get(function(req, res) {
       console.log('Received get on /results/:input from app.route on routes.js');
       // res.send('Received get on /search from app.route on routes.js');
       callAylienAPI('cats', res);
-    })
+    });
 
   app.route('/:input')
     .get(function(req, res) {
       console.log('Received get on /:input from app.route on routes.js. req:', req.params.input, req.params);
       callAylienAPI(req.params.input, res);
-    })
+    });
 
   // app.get('/home', searchController.handleHomeGet);
   // app.post('/home', searchController.handleHomePost);
