@@ -14,7 +14,7 @@ angular.module('smartNews', [
     })
 
     .state('results', {
-      url: '/results',
+      url: '/results/:input',
       templateUrl: 'features/results/results.html',
       controller: 'ResultsCtrl',
       authenticate: false
@@ -29,7 +29,7 @@ angular.module('smartNews', [
 
   $scope.renderView = function() {
     if ($scope.searchinput) {
-      $state.go('results');
+      $state.go('results', {input: $scope.searchinput});
     } else {
       $state.go('home');
     }
