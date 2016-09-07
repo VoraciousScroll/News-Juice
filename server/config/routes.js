@@ -20,7 +20,7 @@ module.exports = function(app, express) {
       'sortBy': 'social_shares_count.facebook',
       'language': ['en'],
       'publishedAtStart': 'NOW-7DAYS',
-      'publishedAtEnd': 'NOW',
+      'publishedAtEnd': 'NOW',  
       // 'entitiesBodyLinksDbpedia': [
       //   'http://dbpedia.org/resource/Donald_Trump',
       //   'http://dbpedia.org/resource/Hillary_Rodham_Clinton'
@@ -73,6 +73,21 @@ module.exports = function(app, express) {
 
   // app.get('/home', searchController.handleHomeGet);
   // app.post('/home', searchController.handleHomePost);
+
+
+  /************ USER AUTH FACEBOOK **************/
+
+  app.get('/auth/facebook', function (req, res) {
+    res.send('this route works')
+  });
+    // passport.authenticate('facebook'));
+
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+      function(req, res) {
+      // Successful authentication, redirect home.
+        res.redirect('/');
+      });
 
   // Error handling: send log the error and send status 500. This handles one error.
   app.use(function(err, req, res, next) {
