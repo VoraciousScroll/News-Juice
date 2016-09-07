@@ -25,7 +25,6 @@ User.findOrCreateUser = function(profile, callback) {
           callback(error);
         } else {
           console.log('Success added new user: ', user);
-          return user;
           callback(null, user);
         }
       });
