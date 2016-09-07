@@ -6,10 +6,12 @@ module.exports = function(app, express) {
 
   // These take the AJAX requests from the client and call the matching function in the second parameter.
 
-  app.get('/', function(req, res) {
-    console.log('Get received on server.js from "/".');
-    res.send('Get received on server.js from "/".');
-  })
+  // app.get('/', function(req, res) {
+  //   console.log('Get received on server.js from "/".');
+  //   res.send('Get received on server.js from "/".');
+  // })
+  
+  app.use('/', express.static('public'));
 
   app.get('/alpha', function(req, res) {
     console.log('Get received on server.js from "/alpha".');
