@@ -7,23 +7,28 @@ var userSchema = new Schema({
   firstname: String,
   lastname: String,
   picture: String,
-  email: String,
   gender: String
 });
 
 var User = mongoose.model('User', userSchema);
 
 User.findOrCreateUser = function(profile, callback) {
+  console.log(profile, 'THESE ARE YOUR PROFILE OPTIONS');
   User.findOne({_facebookUniqueID: profile.id}, function (error, result) {
-    // if (!result) {
-    //   userObj.facebookUniqueID = profile.id;
-    //   userObj.firstname = profile.name.givenName;
-    //   userObj.lastname = profile.name.familyName;
-    //   userObj.picture = profile.picture.type(large);
-    //   userObj.email = profile.name.familyName;
-    // } else {
-    //   callback (error, result);
-    // }
+    console.log(result, 'THIS IS MY RESULT FROM THE DB');
+    if (!result) {
+      User.create({  
+        _facebookUniqueID: profile.id,
+        firstname: profile.first_name,
+        lastname: profile.last_name,
+        picture: profile.picture,
+        gender: String
+      }, function (error, user) {
+
+      });
+    } else {
+      callback (error, result);
+    }
   });
 };
 

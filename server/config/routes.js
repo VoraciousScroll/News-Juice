@@ -37,7 +37,7 @@ module.exports = function(app, express) {
       }
     };
     apiInstance.listStories(opts, callback);
-  }
+  };
 
   // These take the AJAX requests from the client and call the matching function in the second parameter.
 
@@ -46,7 +46,27 @@ module.exports = function(app, express) {
   //   res.send('Get received on server.js from "/".');
   // })
 
-  app.use('/', express.static('public'));
+
+
+
+  /************ USER AUTH FACEBOOK **************/
+
+  app.get('/auth/facebook', 
+    passport.authenticate('facebook'));
+
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+      function(req, res) {
+      // Successful authentication, redirect home.
+        res.redirect('/');
+      });
+
+
+
+
+
+
+  // app.use('/', express.static('public'));
 
   app.get('/alpha', function(req, res) {
     console.log('Get received on server.js from "/alpha".');
@@ -77,17 +97,7 @@ module.exports = function(app, express) {
   // app.post('/home', searchController.handleHomePost);
 
 
-  /************ USER AUTH FACEBOOK **************/
 
-  app.get('/auth/facebook', 
-    passport.authenticate('facebook'));
-
-  app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/login' }),
-      function(req, res) {
-      // Successful authentication, redirect home.
-        res.redirect('/');
-      });
 
   // Error handling: send log the error and send status 500. This handles one error.
   app.use(function(err, req, res, next) {

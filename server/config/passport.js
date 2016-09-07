@@ -11,13 +11,11 @@ var db = require('./db');
 passport.use(new FacebookStrategy({
   clientID: keys.facebook.FACEBOOK_APP_ID,
   clientSecret: keys.facebook.FACEBOOK_APP_SECRET,
-  callbackURL: 'http://localhost:3000/login/facebook/callback',
+  callbackURL: 'http://localhost:3000/auth/facebook/callback',
   profileFields: ['id', 'name', 'picture.type(large)', 'email', 'gender']
 },
   function(accessToken, refreshToken, profile, done) {
-
-    console.log('got here', profile);
-    User.findOrCreate(profile, function(error, user) {
+    db.User.findOrCreateUser(profile, function(error, user) {
       if (error) {
         return done(error);
       } else {
