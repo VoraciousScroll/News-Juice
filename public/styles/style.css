@@ -3,7 +3,9 @@
 h1 {
   font-family: 'Playfair Display SC', serif;
   text-align: center;
+  margin-top: 0px;
 }
+
 
 .main.container {
   margin: 30px auto;
