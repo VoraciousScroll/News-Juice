@@ -12,6 +12,8 @@
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script src="features/results/results.js"></script>
   <script src="features/home/home.js"></script>
   <script src="index.js"></script>
 </head>
@@ -19,11 +21,17 @@
   <h1>News Juice</h1>
 
   <!-- Search Box -->
+  <!-- "container" is a bootstrap class -->
   <div class="main container" ng-controller="SearchCtrl">
     <div class="input-group-lg">
-      <input type="text" class="searchbar form-control" ng-model="searchinput" placeholder="Enter Search Keyword">
+      <input type="text" class="searchbar form-control" ng-model="searchinput"
+      ng-change="renderView()"
+      ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 800, 'blur': 0 } }"
+      placeholder="Enter Search Keyword" />
     </div>
+    <pre>searchinput: <span ng-bind="searchinput"></span></pre>
   </div>
+
   <div class="container" ui-view></div>
 </body>
 </html>

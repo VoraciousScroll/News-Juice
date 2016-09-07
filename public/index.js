@@ -20,18 +20,19 @@ angular.module('smartNews', [
       authenticate: false
     });
 
-    // .state('history', {
-    //   url: '/history',
-    //   templateUrl: '/features/history/history.html',
-    //   controller: 'HistoryCtrl',
-    //   authenticate: true
-    // })
-
   $urlRouterProvider.otherwise('/');
 
 })
 
-.controller('SearchCtrl', function($scope){
+.controller('SearchCtrl', function($scope, $state){
   $scope.searchinput = '';
+
+  $scope.renderView = function() {
+    if ($scope.searchinput) {
+      $state.go('results');
+    } else {
+      $state.go('home');
+    }
+  };
 
 });
