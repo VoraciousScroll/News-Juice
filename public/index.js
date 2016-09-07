@@ -24,12 +24,25 @@ angular.module('smartNews', [
 
 })
 
-.controller('SearchCtrl', function($scope, $state){
+.controller('SearchCtrl', function($scope, $state, $http){
   $scope.searchinput = '';
 
   $scope.renderView = function() {
+    var url = '/' + $scope.searchinput;
     if ($scope.searchinput) {
-      $state.go('results', {input: $scope.searchinput});
+      $http({
+        method: 'GET',
+        url: url
+      })
+      .then(
+        function(obj){
+          console.log('obj:', obj);
+          $state.go('results', {input: obj.data});
+        },
+        function(error){
+          console.log('there was an error!!', error);
+        }
+      );
     } else {
       $state.go('home');
     }
