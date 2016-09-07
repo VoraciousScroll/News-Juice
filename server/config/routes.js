@@ -47,9 +47,9 @@ module.exports = function(app, express) {
   // })
 
 
-
-
   /************ USER AUTH FACEBOOK **************/
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.get('/auth/facebook', 
     passport.authenticate('facebook'));
