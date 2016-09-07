@@ -14,24 +14,25 @@ angular.module('smartNews', [
     })
 
     .state('results', {
-      url: '/results',
+      url: '/results/:input',
       templateUrl: 'features/results/results.html',
       controller: 'ResultsCtrl',
       authenticate: false
     });
 
-    // .state('history', {
-    //   url: '/history',
-    //   templateUrl: '/features/history/history.html',
-    //   controller: 'HistoryCtrl',
-    //   authenticate: true
-    // })
-
   $urlRouterProvider.otherwise('/');
 
 })
 
-.controller('SearchCtrl', function($scope){
+.controller('SearchCtrl', function($scope, $state){
   $scope.searchinput = '';
+
+  $scope.renderView = function() {
+    if ($scope.searchinput) {
+      $state.go('results', {input: $scope.searchinput});
+    } else {
+      $state.go('home');
+    }
+  };
 
 });

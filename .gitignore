@@ -13,3 +13,6 @@ npm-debug.log
 .floo
 .floobit
 .flooignore
+
+# Api Keys
+keys.js
