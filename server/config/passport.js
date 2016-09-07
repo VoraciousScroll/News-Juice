@@ -13,7 +13,7 @@ passport.use(new FacebookStrategy({
   clientSecret: keys.facebook.FACEBOOK_APP_SECRET,
   callbackURL: 'http://localhost:3000/login/facebook/callback',
   profileFields: ['id', 'name', 'picture.type(large)', 'email', 'gender']
-}),
+},
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate(profile, function(error, user) {
       if (error) {
@@ -22,7 +22,7 @@ passport.use(new FacebookStrategy({
         done(null, user);
       }
     });
-  }
+  })
 );
 
 

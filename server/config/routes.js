@@ -1,5 +1,7 @@
 var app = require('../server.js');
 var routes = require('express').Router();
+var passport = require('./passport.js');
+
 // var searchController = require('../search/searchController');
 
 module.exports = function(app, express) {
@@ -77,10 +79,8 @@ module.exports = function(app, express) {
 
   /************ USER AUTH FACEBOOK **************/
 
-  app.get('/auth/facebook', function (req, res) {
-    res.send('this route works')
-  });
-    // passport.authenticate('facebook'));
+  app.get('/auth/facebook', 
+    passport.authenticate('facebook'));
 
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
