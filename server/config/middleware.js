@@ -6,21 +6,22 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var db = require('./db');
 
 module.exports = function(app, express) {
+  app.use(express.static(__dirname + '/../public'));
   passport.use(new FacebookStrategy({
-    clientID: keys.facebook.FACEBOOK_APP_ID,
-    clientSecret: keys.facebook.FACEBOOK_APP_SECRET,
-    callbackURL: 'http://localhost:3000/login/facebook/callback'
-  }),
-  function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate(profile, function (error, user) {
-      if (error) {
-        return done(error);
-      } else {
-        done(null, user);
-      }
-    });
-  }
- );
+      clientID: keys.facebook.FACEBOOK_APP_ID,
+      clientSecret: keys.facebook.FACEBOOK_APP_SECRET,
+      callbackURL: 'http://localhost:3000/login/facebook/callback'
+    }),
+    function(accessToken, refreshToken, profile, done) {
+      User.findOrCreate(profile, function(error, user) {
+        if (error) {
+          return done(error);
+        } else {
+          done(null, user);
+        }
+      });
+    }
+  );
 };
 
 /********************** NOTES **************************/
