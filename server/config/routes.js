@@ -38,3 +38,5 @@ module.exports = function(app, express) {
   });
 
 };
+
+https://api.newsapi.aylien.com/api/v1/stories?text=searchGoesHere&published_at.start=NOW-60DAYS&published_at.end=NOW&categories.id%5B%5D=IAB16&categories.taxonomy=iab-qag&entities.body.links.dbpedia%5B%5D=http%3A%2F%2Fdbpedia.org%2Fresource%2FCat&language=en&sentiment.title.polarity=positive
