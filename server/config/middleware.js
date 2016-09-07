@@ -1,25 +1,27 @@
-var app = require('../server.js');
 var keys = require('../../keys.js');
 
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-module.exports = {
-  passport: function() {
-    passport.use(new FacebookStrategy({
-      clientID: keys.facebook.FACEBOOK_APP_ID,
-      clientSecret: keys.facebook.FACEBOOK_APP_SECRET,
-      callbackURL: 'http://www.example.com/auth/facebook/callback'
-    })
-   );
-  },
+var db = require('./db');
+
+module.exports = function(app, express) {
+  passport.use(new FacebookStrategy({
+    clientID: keys.facebook.FACEBOOK_APP_ID,
+    clientSecret: keys.facebook.FACEBOOK_APP_SECRET,
+    callbackURL: 'http://localhost:3000/login/facebook/callback'
+  }),
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate(profile, function (error, user) {
+      if (error) {
+        return done(error);
+      } else {
+        done(null, user);
+      }
+    });
+  }
+ );
 };
-
-
-  // facebook: {
-  //   FACEBOOK_APP_ID: 237844133279066,
-  //   FACEBOOK_APP_SECRET: 'fdccb8d1e3e64f1e16ae793d05470607'
-  // }
 
 /********************** NOTES **************************/
 
