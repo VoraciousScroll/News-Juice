@@ -32,7 +32,7 @@ angular.module('smartNews', [
   $scope.searchinput = '';
 
   $scope.renderView = function() {
-    var url = '/' + $scope.searchinput;
+    var url = '/results/' + $scope.searchinput;
     if ($scope.searchinput) {
       $http({
         method: 'GET',
