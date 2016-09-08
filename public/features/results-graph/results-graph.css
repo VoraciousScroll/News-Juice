@@ -3,3 +3,11 @@
   stroke: steelblue;
   stroke-width: 1.5px;
 }
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #AAA;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}

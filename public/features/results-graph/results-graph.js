@@ -58,11 +58,13 @@ var renderGraph = function() {
 
   // add x-axis labels
   svg.append('g')
+    .attr('class', 'axis')
     .attr('transform', 'translate(0,' + height + ')')
     .call(d3.axisBottom(x));
 
   // add y-axis labels
   svg.append('g')
+    .attr('class', 'axis')
     .call(d3.axisLeft(y));
 };
 
