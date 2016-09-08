@@ -39,6 +39,11 @@ var svg = d3.select('#graph')
   // move group element to top left margin
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+// div element for tooltip
+var div = d3.select('#graph').append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0);
+
 var renderGraph = function() {
   // format data
   data.forEach(function(d) {
@@ -46,7 +51,7 @@ var renderGraph = function() {
     d.value = d.count;
   });
 
-  // set min and max values of data 
+  // set min and max values of data
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
@@ -55,6 +60,27 @@ var renderGraph = function() {
     .data([data])
     .attr('class', 'line')
     .attr('d', valueline);
+
+  svg.selectAll('dot')
+    .data(data)
+    .enter().append('circle')
+      .attr('r', 5)
+      .attr('cx', function(d) { return x(d.date); })
+      .attr('cy', function(d) { return y(d.value); })
+      .attr('class', 'tooltip-target')
+    .on('mouseover', function(d) {
+      div.transition()
+        .duration(100)
+        .style('opacity', 0.9);
+      div.html(d.date + '<br/>'  + d.value + ' articles')
+        .style('left', (d3.event.pageX) + 'px')
+        .style('top', (d3.event.pageY - 28) + 'px');
+      })
+    .on('mouseout', function(d) {
+      div.transition()
+        .duration(250)
+        .style('opacity', 0);
+  });
 
   // add x-axis labels
   svg.append('g')
