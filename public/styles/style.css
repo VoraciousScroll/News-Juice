@@ -15,3 +15,44 @@ h1 {
 .searchbar.form-control {
   border-radius: 0
 }
+
+/* Results Graph */
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #AAA;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 80px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.tooltip-date {
+  /* nothing needed */
+}
+
+.tooltip-value {
+  font-weight: bold;
+}
+
+.tooltip-target {
+  fill: black;
+  fill-opacity: 0.1;
+}
