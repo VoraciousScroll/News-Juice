@@ -16,9 +16,12 @@ module.exports = function(app, express) {
       function(req, res) {
       // Successful authentication, redirect home.
         console.log(req.session, 'REQUEST SESSION');
-        console.log(req.session.passport, 'REQUEST session');
+        console.log(req.session.passport, 'REQUEST PASSPORT session');
+        res.cookie('authenticate', req.session.passport);
         res.redirect('/');
       });
+
+
 
   /************* AYLIEN API ROUTES ********************/
 
