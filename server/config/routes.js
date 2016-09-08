@@ -2,6 +2,7 @@ var app = require('../server.js');
 var routes = require('express').Router();
 var passport = require('./passport.js');
 var aylien = require('../news-apis/aylien-helpers.js');
+var googleTrends = require('../news-apis/google-trends-helpers.js');
 
 module.exports = function(app, express) {
 
@@ -26,6 +27,24 @@ module.exports = function(app, express) {
     .get(function(req, res) {
       console.log('Received get on /results/:input from app.route on routes.js');
       aylien.timelineData(req.params.input, res);
+    });
+
+  /************************ GOOGLE TRENDS **********************************/
+  // Top trends pull top # of trends from specified country
+    // googleTrends.hotTrends(resultLimit, country, res)
+      // resultLimit: Number
+      // country: String, ex: 'US', default is US
+
+  app.route('/api/news/topTrends')
+    .get(function(req, res) {
+      console.log('Received get on /api/news/topTrends from app.route on routes.js');
+      googleTrends.hotTrends(res, 10, 'US');
+    });
+
+  app.route('/api/news/topTrendsDetail')
+    .get(function(req, res) {
+      console.log('Received get on /api/news/topTrendsDetail from app.route on routes.js');
+      googleTrends.hotTrendsDetail(res, 10, 'US');
     });
 
 
