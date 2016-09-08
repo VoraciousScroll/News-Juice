@@ -1,24 +1,25 @@
 angular.module('smartNews')
 
-.controller('NavCtrl', function($scope, $http, $cookies) {
-  $scope.nav = 'This is the nav bar';
-  $scope.hi = 'working?';
+.controller('NavCtrl', function($scope, $http, $cookies, $location) {
+
+  $scope.isAuth = function(){
+    var auth = $cookies.get('authenticate');
+    if (auth && auth !== 'undefined') {
+      var parsedAuth = JSON.parse(auth.slice(2)).user;
+      $scope.user = {
+        firstname: parsedAuth.firstname,
+        lastname: parsedAuth.lastname,
+        picture: parsedAuth.picture
+      };
+      return true;
+    }
+    $scope.user = {};
+    return false;
+  };
+
   $scope.logout = function() {
-    console.log('BEFORE!!::', $cookies.get('authenticate'));
     $cookies.remove('authenticate');
-    console.log('AFTER::', $cookies.get('authenticate'));
-    // $http({
-    //   url: '/',
-    //   method: 'GET',
-    // })
-    // .then(
-    //   function(data){
-    //     // console.log('routing to /auth/facebook', data);
-    //   },
-    //   function(err){
-    //     // console.log('error routing to /auth/facebook', err);
-    //   }
-    // );
+    $location.url('/');
   };
 
   // in case we decide to use a button and ng-click to log in
