@@ -71,8 +71,11 @@ var renderGraph = function() {
     .on('mouseover', function(d) {
       div.transition()
         .duration(100)
-        .style('opacity', 0.9);
-      div.html(d.date + '<br/>'  + d.value + ' articles')
+        .style('opacity', 0.75);
+      div.html(
+        '<span class="tooltip-date">' + moment(d.date).format("MM/DD/YYYY") + '<br/>'
+        + '<span class="tooltip-value">' + d.value + ' articles'
+        )
         .style('left', (d3.event.pageX) + 'px')
         .style('top', (d3.event.pageY - 28) + 'px');
       })
@@ -114,7 +117,7 @@ d3.json('data-test.json', function(error, json) {
     console.log('error retrieving data:', error);
   } else {
     data = json.time_series;
-    console.log('data:', data);
+    // console.log('data:', data);
     renderGraph();
   }
 });
