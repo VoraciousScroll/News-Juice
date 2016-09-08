@@ -21,7 +21,7 @@ var timelineData = function(input, res) {
   var opts = {
     'title': input,
     'language': ['en'],
-    'publishedAtStart': 'NOW-7DAYS',
+    'publishedAtStart': 'NOW-365DAYS',
     'publishedAtEnd': 'NOW'
   };
 
