@@ -40,7 +40,12 @@ module.exports = function(app, express) {
       console.log('Received get on /api/news/topTrends from app.route on routes.js');
       googleTrends.hotTrends(res, 10, 'US');
     });
-  
+
+  app.route('/api/news/topTrendsDetail')
+    .get(function(req, res) {
+      console.log('Received get on /api/news/topTrendsDetail from app.route on routes.js');
+      googleTrends.hotTrendsDetail(res, 10, 'US');
+    });
 
 
   // Error handling: send log the error and send status 500. This handles one error.
