@@ -30,10 +30,15 @@ module.exports = function(app, express) {
     });
 
   /************************ GOOGLE TRENDS **********************************/
+  // Top trends pull top # of trends from specified country
+    // googleTrends.hotTrends(resultLimit, country, res)
+      // resultLimit: Number
+      // country: String, ex: 'US', default is US
+
   app.route('/api/news/topTrends')
     .get(function(req, res) {
       console.log('Received get on /api/news/topTrends from app.route on routes.js');
-      googleTrends.hotTrends(res);
+      googleTrends.hotTrends(res, 10, 'US');
     });
   
 
