@@ -29,6 +29,14 @@ module.exports = function(app, express) {
       aylien.timelineData(req.params.input, res);
     });
 
+
+  // http://localhost/3000/see-article?input=obama&start=[startdate]&end=[enddate]
+  app.route('/seearticle')
+    .get(function(req, res) {
+      console.log(req.query);
+      aylien.articleImport(req.query.input, res, req.query.start, req.query.end);
+    });
+
   /************************ GOOGLE TRENDS **********************************/
   // Top trends pull top # of trends from specified country
     // googleTrends.hotTrends(resultLimit, country, res)
