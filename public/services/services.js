@@ -100,5 +100,6 @@ angular.module('smartNews.services', [])
 
   return renderGraph;
 
-});
+})
+
 

@@ -1,5 +1,25 @@
 angular.module('smartNews.home', [])
 
+.factory('TopTrendsFactory', function($http) {
+
+  var topTrends = [];
+
+  var topTrendsGoogleTrends = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/news/topTrendsDetail'
+    })
+    .then(function(response) {
+      response.data.forEach(function(topic) {
+        topTrends.push(topic);
+      });
+    });
+  };
+
+  topTrendsGoogleTrends();
+  return topTrends;
+})
+
 // Sub-Views
 .directive('homechart', function(){
   return {
@@ -13,10 +33,10 @@ angular.module('smartNews.home', [])
     controller: 'HomeNewsCtrl'
   };
 })
-.directive('hometrends', function(){
+.directive('toptrends', function(){
   return {
     templateUrl: 'features/home/trends.html',
-    controller: 'HomeTrendsCtrl'
+    controller: 'TopTrendsCtrl'
   };
 })
 
