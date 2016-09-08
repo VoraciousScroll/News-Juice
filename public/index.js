@@ -1,7 +1,10 @@
+// var cookies = require('angular-cookies');
+
 angular.module('smartNews', [
   'ui.router',
   'smartNews.home',
-  'smartNews.results'
+  'smartNews.results',
+  'ngCookies'
 ])
 
 .config(function($urlRouterProvider, $stateProvider) {
