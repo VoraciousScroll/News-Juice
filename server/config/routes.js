@@ -2,6 +2,7 @@ var app = require('../server.js');
 var routes = require('express').Router();
 var passport = require('./passport.js');
 var aylien = require('../news-apis/aylien-helpers.js');
+var googleTrends = require('../news-apis/google-trends-helpers.js');
 
 module.exports = function(app, express) {
 
@@ -27,6 +28,14 @@ module.exports = function(app, express) {
       console.log('Received get on /results/:input from app.route on routes.js');
       aylien.timelineData(req.params.input, res);
     });
+
+  /************************ GOOGLE TRENDS **********************************/
+  app.route('/api/news/topTrends')
+    .get(function(req, res) {
+      console.log('Received get on /api/news/topTrends from app.route on routes.js');
+      googleTrends.hotTrends(res);
+    });
+  
 
 
   // Error handling: send log the error and send status 500. This handles one error.
