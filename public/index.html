@@ -15,6 +15,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-cookies.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="services/services.js"></script>
     <script src="features/results/results.js"></script>
     <script src="features/home/home.js"></script>
     <script src="features/home/chart.js"></script>
@@ -35,7 +36,7 @@
     <div class="input-group-lg">
       <input type="text" class="searchbar form-control" ng-model="searchinput"
       ng-change="renderView()"
-      ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 800, 'blur': 0 } }"
+      ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }"
       placeholder="Enter Search Keyword" />
     </div>
     <pre>Stories: <span ng-bind="searchinput"></span></pre>
