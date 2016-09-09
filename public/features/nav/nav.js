@@ -17,6 +17,10 @@ angular.module('smartNews')
     return false;
   };
 
+  $scope.goToProfile = function(){
+
+  }
+
   $scope.logout = function() {
     $cookies.remove('authenticate');
     $location.url('/');

@@ -2,6 +2,7 @@
 
 angular.module('smartNews', [
   'ui.router',
+  'smartNews.profile',
   'smartNews.home',
   'smartNews.results',
   'ngCookies',
@@ -9,29 +10,48 @@ angular.module('smartNews', [
   'ngSanitize'
 ])
 
-.config(function($urlRouterProvider, $stateProvider) {
+.config(function($urlRouterProvider, $stateProvider){
 
   $stateProvider
-    .state('home', {
-      url: '/',
+    .state('main', {
+      url: '/main',
+      templateUrl: 'features/main/main.html',
+      authenticate: false
+    })
+    .state('main.home', {
+      url: '/home',
       templateUrl: 'features/home/home.html',
       controller: 'HomeCtrl',
       authenticate: false
     })
 
-    .state('results', {
+    .state('main.results', {
       url: '/results/:input',
       templateUrl: 'features/results/results.html',
       controller: 'ResultsCtrl',
       authenticate: false
+    })
+
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'features/profile/profile.html',
+      controller: 'ProfileCtrl',
+      authenticate: false
     });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/main/home');
 
 })
 
+.directive('navbar', function(){
+  return {
+    templateUrl: 'features/nav/nav.html',
+    controller: 'NavCtrl'
+  };
+})
+
 .controller('SearchCtrl', function($scope, $state, $http, renderGraph){
-  $scope.searchinput = '';
+  $scope.searchinput = 'meow';
 
   $scope.renderView = function() {
     var url = '/results/' + $scope.searchinput;
@@ -43,7 +63,7 @@ angular.module('smartNews', [
       .then(
         function(obj){
           console.log('obj:', obj);
-          $state.go('results', {input: $scope.searchinput, articleReceived: false})
+          $state.go('main.results', {input: $scope.searchinput, articleReceived: false})
           .then(function(){
             renderGraph(obj);
           });
@@ -53,15 +73,8 @@ angular.module('smartNews', [
         }
       );
     } else {
-      $state.go('home');
+      $state.go('main.home');
     }
   };
 
-})
-
-.directive('navbar', function(){
-  return {
-    templateUrl: 'features/nav/nav.html',
-    controller: 'NavCtrl'
-  };
 });

@@ -1,22 +1,38 @@
 <nav class="navbar navbar-static-top">
 
-  <!-- Unauthenticated View -->
-  <div class="container" ng-hide="isAuth()">
-    <p class="navbar-text navbar-right">
-      <a href="/auth/facebook" class="navbar-link">
-        Log in with Facebook
-      </a>
-    </p>
-  </div>
+  <div class="container">
 
-  <!-- Authenticated View -->
-  <div class="container" ng-show="isAuth()">
-    <p class="navbar-text navbar-right">
-      Welcome back {{user.firstname}}
-      <a href="#" ng-click="logout()" class="navbar-link">
-        Log out
-      </a>
-    </p>
+    <ul class="nav navbar-nav">
+      <li ng-show="isAuth()">
+        <p class="navbar-text">
+          Welcome Back {{user.firstname}}
+        </p>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+
+      <!-- Authenticated LIs -->
+      <li ng-show="isAuth()">
+        <a ui-sref="profile" class="navbar-link">
+          User Settings
+        </a>
+      </li>
+
+      <li ng-show="isAuth()">
+        <a href="#" ng-click="logout()" class="navbar-link">
+          Log out
+        </a>
+      </li>
+
+      <!-- Unauthenticated LIs -->
+      <li ng-hide="isAuth()">
+        <a href="/auth/facebook" class="navbar-link">
+          Log in with Facebook
+        </a>
+      </li>
+
+    </ul>
   </div>
 
 </nav>
