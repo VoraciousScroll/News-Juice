@@ -6,6 +6,10 @@ h1 {
   margin-top: 0px;
 }
 
+h4 {
+  text-align: center;
+}
+
 
 .main.container {
   margin: 30px auto;
