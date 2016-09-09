@@ -9,10 +9,11 @@ angular.module('smartNews.results', [])
 
     var input = $stateParams.input;
 
-    var publishStart = '2016-03-19T22:53:43.757Z';
-    var publishEnd = '2016-03-26T22:53:43.757Z';
+    // var publishStart = '2016-03-19T22:53:43.757Z';
+    var publishStart = 'NOW-2DAYS';
+    // var publishEnd = '2016-03-26T22:53:43.757Z';
+    var publishEnd = 'NOW';
 
-    // var url = `/seearticle?input=${input}&start=${publishStart}&end=${publishEnd}`;
     var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
 
     $http({
@@ -20,7 +21,7 @@ angular.module('smartNews.results', [])
       url: url
     }).then(
       function(data){
-        console.log(data);
+        // console.log(data);
         $scope.articleReceived = true;
         $scope.article = data;
       },
