@@ -51,7 +51,7 @@ angular.module('smartNews', [
 })
 
 .controller('SearchCtrl', function($scope, $state, $http, renderGraph){
-  $scope.searchinput = 'meow';
+  $scope.searchinput = '';
 
   $scope.renderView = function() {
     var url = '/results/' + $scope.searchinput;
