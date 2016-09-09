@@ -17,13 +17,30 @@ h1 > a:hover {
 }
 
 h4 {
-  text-align: center;
+  text-align: left;
+  display: inline
 }
 
 .primaryImg {
   max-width: 200px;
   border: 10px 10px;
   float: left;
+}
+
+.articleImg {
+  align-items: flex-end;
+  justify-content: space-around;
+} 
+
+.trendArticle {
+  border-width: 1px;
+  border-color: lightgrey;
+  border-radius: 5px;
+  border-style: solid;
+}
+
+.trendArticle img {
+  align: right;
 }
 
 .upperdiv.container {
