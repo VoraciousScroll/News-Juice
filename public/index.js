@@ -7,7 +7,8 @@ angular.module('smartNews', [
   'smartNews.results',
   'ngCookies',
   'smartNews.services',
-  'ngSanitize'
+  'ngSanitize',
+  'ui.bootstrap'
 ])
 
 .config(function($urlRouterProvider, $stateProvider){
@@ -52,6 +53,48 @@ angular.module('smartNews', [
 
 .controller('SearchCtrl', function($scope, $state, $http, renderGraph){
   $scope.searchinput = '';
+
+  $scope.getDropdown = function(val){
+    return $http({
+      method: 'GET',
+      url: '/input/' + val
+    })
+    .then(function(response){
+      var dropdown = [];
+      var pages = response.data.query.pages;
+      for (var i in pages){
+        dropdown.push({
+          title: pages[i].title,
+          image: pages[i].thumbnail ? pages[i].thumbnail.source : ""
+        });
+      }
+      return dropdown;
+    });
+  };
+
+  $scope.renderDropdown = function(){
+    if ($scope.searchinput){
+      $http({
+        method: 'GET',
+        url: '/input/' + $scope.searchinput
+      })
+      .then(function(data){
+        console.log('WE GOT ZE data: ', data.data);
+        var pages = data.data.query.pages;
+
+        for (var i in pages){
+          $scope.dropdown = [];
+          $scope.dropdown.push({
+            title: pages[i].title,
+            image: pages[i].thumbnail ? pages[i].thumbnail.source : ""
+          });
+        }
+
+      });
+    } else {
+      $state.go('main.home');
+    }
+  };
 
   $scope.renderView = function() {
     var url = '/results/' + $scope.searchinput;

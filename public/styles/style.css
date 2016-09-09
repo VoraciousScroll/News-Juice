@@ -30,6 +30,21 @@ h4 {
   border-radius: 0
 }
 
+.dropdown-menu>li>a {
+}
+
+.dropdown-image {
+  width: 64px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.dropdown-image > img {
+  height: 64px;
+  max-width: 64px;
+}
+
 /* Results Graph */
 
 #graph {
