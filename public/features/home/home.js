@@ -37,10 +37,10 @@ angular.module('smartNews.home', [])
     controller: 'HomeChartCtrl'
   };
 })
-.directive('homenews', function(){
+.directive('primaryarticle', function(){
   return {
-    templateUrl: 'features/home/news.html',
-    controller: 'HomeNewsCtrl'
+    templateUrl: 'features/home/primaryArticle.html',
+    controller: 'PrimaryArticleCtrl'
   };
 })
 .directive('toptrends', function(){

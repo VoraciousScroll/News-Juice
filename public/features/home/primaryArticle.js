@@ -1,6 +1,6 @@
 angular.module('smartNews.home')
 
-.controller('HomeNewsCtrl', function($scope) {
+.controller('PrimaryArticleCtrl', function($scope) {
   $scope.news = 'Here lies the news';
 
 });
