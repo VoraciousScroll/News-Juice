@@ -2,6 +2,7 @@ angular.module('smartNews.home', [])
 
 .factory('TopTrendsFactory', function($http) {
   var topTrends = [];
+  var primaryArticle = [];
 
   var formattedTopic = function (topic) {
     return {
@@ -20,14 +21,26 @@ angular.module('smartNews.home', [])
       url: '/api/news/topTrendsDetail'
     })
     .then(function(response) {
-      response.data.forEach(function(topic) {
+      response.data.forEach(function(topic, index) {
+        if (index === 0) {
+          primaryArticle.push(formattedTopic(topic));
+        }
         topTrends.push(formattedTopic(topic));
       });
     });
   };
-  
+
+  var setPrimaryArticle = function (article) {
+    primaryArticle[0] = article;
+  };
+
   topTrendsGoogleTrends();
-  return topTrends;
+
+  return {
+    topTrends: topTrends,
+    primaryArticle: primaryArticle,
+    setPrimaryArticle: setPrimaryArticle
+  };
 })
 
 // Sub-Views
