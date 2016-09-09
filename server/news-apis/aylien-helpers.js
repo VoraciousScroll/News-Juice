@@ -40,15 +40,16 @@ var timelineData = function(input, res) {
   });
 };
 
-var articleImport = function(input, res, start, end){
-
+var articleImport = function(input, res, start, end, limit) {
+  limit = limit || 3;
   var opts = {
     'title': input,
+    // 'text': input,
     'language': ['en'],
     'sortBy': 'relevance',
     'publishedAtStart': start,
     'publishedAtEnd': end,
-    'perPage': 3
+    'perPage': limit,
   };
 
   api.listStories(opts, function(err, data) {

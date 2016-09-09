@@ -10,7 +10,7 @@ module.exports = function(app, express) {
 /**************** AUTOCOMPLETE *****************/
   app.route('/input/:input')
     .get(function(req,res){
-      var url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=pageprops%7Cpageimages%7Cpageterms&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=10&wbptterms=description&gpssearch=' + req.params.input + '&gpsnamespace=0&gpslimit=10';
+      var url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=pageprops%7Cpageimages%7Cpageterms&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=5&wbptterms=description&gpssearch=' + req.params.input + '&gpsnamespace=0&gpslimit=5';
       request(url, function(err, resp, body){
         if (err) {
           console.log('there was an error requesting via express', err);
@@ -46,8 +46,9 @@ module.exports = function(app, express) {
   // http://localhost/3000/see-article?input=obama&start=[startdate]&end=[enddate]
   app.route('/seearticle')
     .get(function(req, res) {
-      console.log(req.query);
-      aylien.articleImport(req.query.input, res, req.query.start, req.query.end);
+      console.log(req.url, 'URL STRING');
+      console.log(req.query, 'QUERY STRING');
+      aylien.articleImport(req.query.input, res, req.query.start, req.query.end, req.query.limit);
     });
 
   /************************ GOOGLE TRENDS **********************************/

@@ -1,9 +1,12 @@
 <div>
   <div ng-repeat="trend in topTrends">
-    <h4>{{ trend.topic }}</h4>
-    <div ng-bind-html="trend.articleTitle"></div>
-    <div>{{ trend.traffic }}</div>
-    <img ng-src="{{ trend.img }}">
-    <a href="{{ trend.articleLink }}">{{ trend.articleSource }}</a>
+    <div class="trendArticle" ng-click="selectArticle(trend)">
+      <h4>{{ trend.topic }}</h4>
+      <span>{{ trend.traffic }}</span>
+      <img class="articleImg" ng-src="{{ trend.img }}">
+    </div>
   </div>
 </div>
+
+<!--       <a href="{{ trend.articleLink }}">{{ trend.articleSource }}</a>
+      <div ng-bind-html="trend.articleTitle"></div> -->
