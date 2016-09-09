@@ -1,18 +1,29 @@
+// TO-DOs
+
+// 1: Make it so timeline width fills out the width of parent div.
+// see: http://jsfiddle.net/shawnbot/BJLe6/
+// use document.getElementById('graph') instead of $('#graph');
+
+// Timeline height can be a fixed px height.
+
+// 2: Set up graph to start from the middle of y-axes rather than bottom
+
 angular.module('smartNews.services', [])
 
 .factory('renderGraph', function(){
 
   var renderGraph = function(dataObj) {
-
     data = dataObj.data.timeSeries;
 
     // set graph dimensions and margins
     var margin = {top: 20, right: 20, bottom: 30, left: 50};
-    // var width = (0.7 * window.innerWidth) - margin.left - margin.right;
-    // var height = (0.5 * window.innerHeight) - margin.top - margin.bottom;
+
     // fixed size graph:
-    var width = 720 - margin.left - margin.right;
-    var height = 300 - margin.top - margin.bottom;
+
+    var graph = document.getElementById('graph');
+
+    var width = window.innerWidth - margin.left - margin.right;
+    var height = 200 - margin.top - margin.bottom;
 
     // parse UTC date/time
     var parseTime = d3.timeParse('%Y-%m-%dT%H:%M:%S.%LZ');
@@ -100,7 +111,4 @@ angular.module('smartNews.services', [])
   };
 
   return renderGraph;
-
-})
-
-
+});
