@@ -15,36 +15,16 @@ angular.module('smartNews.home', [])
     };
   };
 
-
-/*
-[{"topic":"Joe Manganiello","articleTitle":"<b>Joe Manganiello</b> to play Deathstroke in upcoming Batman film","traffic":"100,000+","img":"http://t3.gstatic.com/images?q=tbn:ANd9GcQHbI-qNraFUlRhClUqgJBkXak4TJGhB6nyYuvsHwyAtPZ4urIxgmSgWFJBTdupTDYdW_uBAQBG","articleLink":"http://money.cnn.com/2016/09/08/media/joe-manganiello-deathstroke/","articleSource":"CNNMoney"}]
-
-
-*/
-
-// Joe Manganiello
   var getPrimaryArticle = function(topic) {
-
-
-    // var input = $stateParams.input;
-
-    // var publishStart = '2016-03-19T22:53:43.757Z';
     var publishStart = 'NOW-2DAYS';
-    // var publishEnd = '2016-03-26T22:53:43.757Z';
     var publishEnd = 'NOW';
 
-    // var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
-
-
-
-
-    var url = '/seearticle?input=' + topic + '&start=' + publishStart + '&end=' + publishEnd;
+    var url = '/seearticle?input=' + topic + '&start=' + publishStart + '&end=' + publishEnd + '&limit=1';
     return $http({
       method: 'GET',
       url: url
     })
     .then(function(article) {
-      console.log(article, 'PRIMARY ARTICLE');
       return article;
     });
   };
@@ -56,18 +36,13 @@ angular.module('smartNews.home', [])
     })
     .then(function(response) {
       response.data.forEach(function(topic, index) {
-        if (index === 0) {
-          
-          primaryArticle.push(formattedTopic(topic));
-          console.log(primaryArticle[0].articleTitle, 'INPUT')
-          getPrimaryArticle(primaryArticle[0].articleTitle)
+        if (index === 0) {      
+          var title = sanitizeTitle(formattedTopic(topic).articleTitle);
+          getPrimaryArticle(title)
             .then(function (article) {
-              console.log(article, 'JULIE');
+              var article = article.data.stories[0];
+              primaryArticle.push(article);
             });
-          // var title = $sanitize(primaryArticle[0].articleTitle);
-          // var source = $sanitize(primaryArticle[0].articleSource);
-          // var article1 = getArticle(title, source);
-          // console.log(primaryArticle[0].topic, 'JULIE');
         }
         topTrends.push(formattedTopic(topic));
       });
@@ -76,6 +51,12 @@ angular.module('smartNews.home', [])
 
   var setPrimaryArticle = function (article) {
     primaryArticle[0] = article;
+  };
+
+  var sanitizeTitle = function(title) {
+    return title.replace('<b>', '')
+      .replace('</b>', '')
+      .replace('&#39;', '');
   };
 
   topTrendsGoogleTrends();

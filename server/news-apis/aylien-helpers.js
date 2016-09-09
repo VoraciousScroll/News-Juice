@@ -44,7 +44,7 @@ var articleImport = function(input, res, start, end, limit) {
   limit = limit || 3;
   var opts = {
     'title': input,
-    'text': input,
+    // 'text': input,
     'language': ['en'],
     'sortBy': 'relevance',
     'publishedAtStart': start,
