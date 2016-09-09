@@ -62,12 +62,13 @@ angular.module('smartNews.services', [])
       .attr('class', 'line')
       .attr('d', valueline);
 
-    svg.selectAll('dot')
+    svg.selectAll('rect')
       .data(data)
-      .enter().append('circle')
-        .attr('r', 5)
-        .attr('cx', function(d) { return x(d.date); })
-        .attr('cy', function(d) { return y(d.value); })
+      .enter().append('rect')
+        .attr('width', width / data.length)
+        .attr('height', height)
+        .attr('x', function(d) { return x( d.date - (width/data.length/2) ); })
+        .attr('y', 0)
         .attr('class', 'tooltip-target')
       .on('mouseover', function(d) {
         div.transition()
