@@ -62,7 +62,7 @@ angular.module('smartNews', [
       })
       .then(
         function(obj){
-          console.log('obj:', obj);
+          // console.log('obj:', obj);
           $state.go('main.results', {input: $scope.searchinput, articleReceived: false})
           .then(function(){
             renderGraph(obj);
