@@ -64,7 +64,9 @@ angular.module('smartNews.home', [])
   return {
     topTrends: topTrends,
     primaryArticle: primaryArticle,
-    setPrimaryArticle: setPrimaryArticle
+    setPrimaryArticle: setPrimaryArticle,
+    getPrimaryArticle: getPrimaryArticle,
+    sanitizeTitle: sanitizeTitle
   };
 })
 
