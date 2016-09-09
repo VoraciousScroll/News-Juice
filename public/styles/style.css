@@ -20,6 +20,12 @@ h4 {
   text-align: center;
 }
 
+.primaryImg {
+  /*max-height: px;*/
+  max-width: 200px;
+  border: 10px 10px;
+  float: left;
+}
 
 .upperdiv.container {
   margin: 30px auto;
