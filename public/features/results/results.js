@@ -12,7 +12,8 @@ angular.module('smartNews.results', [])
     var publishStart = '2016-03-19T22:53:43.757Z';
     var publishEnd = '2016-03-26T22:53:43.757Z';
 
-    var url = `/seearticle?input=${input}&start=${publishStart}&end=${publishEnd}`;
+    // var url = `/seearticle?input=${input}&start=${publishStart}&end=${publishEnd}`;
+    var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
 
     $http({
       method: 'GET',
