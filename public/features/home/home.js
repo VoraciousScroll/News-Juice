@@ -25,6 +25,7 @@ angular.module('smartNews.home', [])
       });
     });
   };
+  
   topTrendsGoogleTrends();
   return topTrends;
 })

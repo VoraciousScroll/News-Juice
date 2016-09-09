@@ -1,9 +1,25 @@
 <div>
   <div ng-repeat="trend in topTrends">
-    {{ trend }}
+    <h5>{{ trend.topic }}</h5>
+    <div ng-bind-html="trend.articleTitle"></div>
+    <div>{{ trend.traffic }}</div>
+    <img src="{{ trend.img }}">
+    <a href="{{ trend.articleLink }}">{{ trend.articleSource }}</a>
   </div>
 </div>
 
+
+<!-- 
+    return {
+      topic: topic.title[0],
+      articleTitle: topic['ht:news_item'][0]['ht:news_item_title'][0],
+      traffic: topic['ht:approx_traffic'][0],
+      img: 'http://' + topic['ht:picture'][0].slice(2),
+      articleLink: topic['ht:news_item'][0]['ht:news_item_url'][0], 
+      articleSource: topic['ht:news_item'][0]['ht:news_item_source'][0]
+    };
+
+ -->
 
 <!--   <div ng-repeat="trend in topTrends">
     <h5>{{ trend.title[0] }}</h5>
@@ -12,3 +28,4 @@
     <img src="{{ 'http://' + trend['ht:picture'][0].slice(2) }}">
     <a href="{{ trend['ht:news_item'][0]['ht:news_item_url'][0] }}">{{ trend['ht:news_item'][0]['ht:news_item_source'][0] }}</a>
   </div> -->
+
