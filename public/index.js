@@ -5,7 +5,8 @@ angular.module('smartNews', [
   'smartNews.home',
   'smartNews.results',
   'ngCookies',
-  'smartNews.services'
+  'smartNews.services',
+  'ngSanitize'
 ])
 
 .config(function($urlRouterProvider, $stateProvider) {

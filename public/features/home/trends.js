@@ -1,6 +1,21 @@
 angular.module('smartNews.home')
 
-.controller('HomeTrendsCtrl', function($scope) {
-  $scope.trends = 'Here are the trends';
+.controller('TopTrendsCtrl', function($scope, TopTrendsFactory) {
+  $scope.topTrends = TopTrendsFactory;
+  $scope.test = '<b>Seahawks</b> planning pregame demonstration before regular-season opener'
+  // var renderTopTrends = function () {
+  //   TopTrendsFactory()
+  //     .then(function(response) {
+  //       console.log(Array.isArray(response));
+  //       response.forEach(function(topic) {
+  //         $topTrends.push(topic);
+  //       });
+  //     });
+  // };
+
+  // renderTopTrends();
+
+
+
 
 });
