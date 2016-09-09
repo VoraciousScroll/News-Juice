@@ -40,7 +40,29 @@ var timelineData = function(input, res) {
   });
 };
 
+var articleImport = function(input, res, start, end){
+
+  var opts = {
+    'title': input,
+    'language': ['en'],
+    'sortBy': 'relevance',
+    'publishedAtStart': start,
+    'publishedAtEnd': end,
+    'perPage': 3
+  };
+
+  api.listStories(opts, function(err, data) {
+    if (err) {
+      console.log('<------ERROR--------->', err);
+    } else {
+      console.log('API called successfully. Returned data: ' + data);
+      res.send(data);
+    }
+  });
+
+};
 
 module.exports = {
-  timelineData: timelineData
+  timelineData: timelineData,
+  articleImport: articleImport
 };

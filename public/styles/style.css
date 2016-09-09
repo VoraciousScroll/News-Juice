@@ -21,6 +21,11 @@ h4 {
 }
 
 /* Results Graph */
+
+#graph {
+  width: auto;
+}
+
 .line {
   fill: none;
   stroke: steelblue;
