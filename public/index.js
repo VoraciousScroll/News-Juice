@@ -2,8 +2,9 @@
 
 angular.module('smartNews', [
   'ui.router',
-  'smartNews.main',
   'smartNews.profile',
+  'smartNews.home',
+  'smartNews.results',
   'ngCookies',
   'smartNews.services',
   'ngSanitize'
@@ -13,14 +14,22 @@ angular.module('smartNews', [
 
   $stateProvider
     .state('main', {
-      url: '/',
-      views: {
-        "content": {
-          templateUrl: 'features/main/main.html',
-          controller: 'MainCtrl',
-          authenticate: false
-        }
-      }
+      url: '/main',
+      templateUrl: 'features/main/main.html',
+      authenticate: false
+    })
+    .state('main.home', {
+      url: '/home',
+      templateUrl: 'features/home/home.html',
+      controller: 'HomeCtrl',
+      authenticate: false
+    })
+
+    .state('main.results', {
+      url: '/results/:input',
+      templateUrl: 'features/results/results.html',
+      controller: 'ResultsCtrl',
+      authenticate: false
     })
 
     .state('profile', {
@@ -30,7 +39,7 @@ angular.module('smartNews', [
       authenticate: false
     });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/main/home');
 
 })
 
@@ -39,4 +48,33 @@ angular.module('smartNews', [
     templateUrl: 'features/nav/nav.html',
     controller: 'NavCtrl'
   };
+})
+
+.controller('SearchCtrl', function($scope, $state, $http, renderGraph){
+  $scope.searchinput = 'meow';
+
+  $scope.renderView = function() {
+    var url = '/results/' + $scope.searchinput;
+    if ($scope.searchinput) {
+      $http({
+        method: 'GET',
+        url: url
+      })
+      .then(
+        function(obj){
+          console.log('obj:', obj);
+          $state.go('main.results', {input: $scope.searchinput, articleReceived: false})
+          .then(function(){
+            renderGraph(obj);
+          });
+        },
+        function(error){
+          console.log('there was an error!!', error);
+        }
+      );
+    } else {
+      $state.go('main.home');
+    }
+  };
+
 });
