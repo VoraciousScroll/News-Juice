@@ -44,12 +44,12 @@ var articleImport = function(input, res, start, end, limit) {
   limit = limit || 3;
   var opts = {
     'title': input,
+    'text': input,
     'language': ['en'],
     'sortBy': 'relevance',
     'publishedAtStart': start,
     'publishedAtEnd': end,
     'perPage': limit,
-    'sourceName': source
   };
 
   api.listStories(opts, function(err, data) {

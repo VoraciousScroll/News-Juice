@@ -23,51 +23,31 @@ angular.module('smartNews.home', [])
 */
 
 // Joe Manganiello
+  var getPrimaryArticle = function(topic) {
 
 
-    var getArticle = function(input, source) {
+    // var input = $stateParams.input;
 
-      var publishStart = 'NOW-2DAYS';
-      var publishEnd = 'NOW';
+    // var publishStart = '2016-03-19T22:53:43.757Z';
+    var publishStart = 'NOW-2DAYS';
+    // var publishEnd = '2016-03-26T22:53:43.757Z';
+    var publishEnd = 'NOW';
 
-      var url = `/seearticle?input=${input}&start=${publishStart}&end=${publishEnd}&source=${source}`;
-      console.log(url, 'THIS IS THE URL');
+    // var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
 
-      $http({
-        method: 'GET',
-        url: url
-      }).then(
-        function(data) {
-          // console.log(data);
-          // $scope.articleReceived = true;
-          // $scope.article = data;
-          console.log(data, 'return method')
-        },
-        function(err) {
-          console.log('THERE WAS AN ERROR RECEIVING DATA FROM SEEARTICLE', err);
-        }
-      );
+
+
+
+    var url = '/seearticle?input=' + topic + '&start=' + publishStart + '&end=' + publishEnd;
+    return $http({
+      method: 'GET',
+      url: url
+    })
+    .then(function(article) {
+      console.log(article, 'PRIMARY ARTICLE');
+      return article;
+    });
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   var topTrendsGoogleTrends = function () {
     return $http({
@@ -77,11 +57,17 @@ angular.module('smartNews.home', [])
     .then(function(response) {
       response.data.forEach(function(topic, index) {
         if (index === 0) {
+          
           primaryArticle.push(formattedTopic(topic));
-          var title = $sanitize(primaryArticle[0].articleTitle);
-          var source = $sanitize(primaryArticle[0].articleSource);
-          var article1 = getArticle(title, source);
-          console.log(article1, 'JULIE');
+          console.log(primaryArticle[0].articleTitle, 'INPUT')
+          getPrimaryArticle(primaryArticle[0].articleTitle)
+            .then(function (article) {
+              console.log(article, 'JULIE');
+            });
+          // var title = $sanitize(primaryArticle[0].articleTitle);
+          // var source = $sanitize(primaryArticle[0].articleSource);
+          // var article1 = getArticle(title, source);
+          // console.log(primaryArticle[0].topic, 'JULIE');
         }
         topTrends.push(formattedTopic(topic));
       });
