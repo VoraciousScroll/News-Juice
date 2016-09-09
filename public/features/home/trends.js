@@ -4,6 +4,7 @@ angular.module('smartNews.home')
   var sanitizeTitle = TopTrendsFactory.sanitizeTitle;
   $scope.topTrends = TopTrendsFactory.topTrends;
   $scope.selectArticle = function (topic) {
+
     var title = sanitizeTitle(topic.articleTitle);
     TopTrendsFactory.getPrimaryArticle(title)
       .then(function (article) {
