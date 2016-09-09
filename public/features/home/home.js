@@ -30,11 +30,16 @@ angular.module('smartNews.home', [])
     });
   };
 
+  var setPrimaryArticle = function (article) {
+    primaryArticle[0] = article;
+  };
+
   topTrendsGoogleTrends();
 
   return {
     topTrends: topTrends,
-    primaryArticle: primaryArticle
+    primaryArticle: primaryArticle,
+    setPrimaryArticle: setPrimaryArticle
   };
 })
 
