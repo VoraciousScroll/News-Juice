@@ -2,15 +2,26 @@
 
   <div class="container">
 
+    <!-- Authenticated LIs -->
     <ul class="nav navbar-nav">
+
       <li ng-show="isAuth()">
         <p class="navbar-text">
           Welcome Back {{user.firstname}}
         </p>
       </li>
+
+      <!-- Unauthenticated LIs -->
+
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
+
+      <li>
+        <a ui-sref="main.home" class="navbar-link">
+          Home
+        </a>
+      </li>
 
       <!-- Authenticated LIs -->
       <li ng-show="isAuth()">

@@ -3,8 +3,23 @@ var routes = require('express').Router();
 var passport = require('./passport.js');
 var aylien = require('../news-apis/aylien-helpers.js');
 var googleTrends = require('../news-apis/google-trends-helpers.js');
+var request = require('request');
 
 module.exports = function(app, express) {
+
+/**************** AUTOCOMPLETE *****************/
+  app.route('/input/:input')
+    .get(function(req,res){
+      var url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=pageprops%7Cpageimages%7Cpageterms&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=10&wbptterms=description&gpssearch=' + req.params.input + '&gpsnamespace=0&gpslimit=10';
+      request(url, function(err, resp, body){
+        if (err) {
+          console.log('there was an error requesting via express', err);
+        } else {
+          console.log('<<<<<<<<<<- congrats!!!');
+          res.status(200).send(body);
+        }
+      });
+    });
 
 /**************** USER AUTH FACEBOOK *****************/
   app.use(passport.initialize());
@@ -17,8 +32,6 @@ module.exports = function(app, express) {
     passport.authenticate('facebook', { failureRedirect: '/login' }),
       function(req, res) {
       // Successful authentication, redirect home.
-        console.log(req.session, 'REQUEST SESSION');
-        console.log(req.session.passport, 'REQUEST PASSPORT session');
         res.cookie('authenticate', req.session.passport);
         res.redirect('/');
       });
