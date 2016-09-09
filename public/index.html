@@ -21,6 +21,8 @@
   <script src="features/home/chart.js"></script>
   <script src="features/home/trends.js"></script>
   <script src="features/home/primaryArticle.js"></script>
+  <script src="features/profile/profile.js"></script>
+  <script src="features/main/main.js"></script>
   <script src="index.js"></script>
   <script src="features/nav/nav.js"></script>
   <!-- // Scripts -->
@@ -29,31 +31,6 @@
 <body>
   <navbar></navbar>
   <h1>News Juice</h1>
-  <!-- Search Box -->
-  <!-- "container" is a bootstrap class -->
-  <div class="main container" ng-controller="SearchCtrl">
-    <div class="input-group-lg">
-      <input type="text" class="searchbar form-control" ng-model="searchinput" ng-change="renderView()" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }" placeholder="Enter Search Keyword" />
-    </div>
-    <pre>Stories: <span ng-bind="searchinput"></span></pre>
-    
-    <!-- Auto-complete: This method is functional, but static. The 'obama' search-term at the end of the 'src' script needs to be replaced by Angular injection of {{searchinput}}. This may not be possible without converting the 'src' style http call into a traditional angular GET request, which in turn may not be possible without implementing CORS handling on the Node server. GET testing with the provided example search URL works well with Postman, curl, and the browser, but results in CORS errors when implemented through Angular. This has not yet been resolved. -->
-    <script>
-    var searchWord = function(data) {
-      console.log('trying');
-      var results = [];
-      for (var key in data.query.pages) {
-        results[data.query.pages[key].index - 1] = data.query.pages[key].title;
-      }
-      document.getElementById('output').innerHTML = results;
-      console.log(results);
-    }
-    </script>
-    <pre>Dropdown suggestions: <div id='output'></div></pre>
-    <script src="https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=pageprops%7Cpageimages%7Cpageterms&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=6&wbptterms=description&gpssearch=obama&gpsnamespace=0&gpslimit=6&callback=searchWord"></script>
-    
-  </div>
-  <div class="container" ui-view></div>
+  <div ui-view="content" class="container"></div>
 </body>
-
 </html>
