@@ -4,7 +4,8 @@
   "description": "news app",
   "main": "./server/index.js",
   "scripts": {
-    "test": ""
+    "start": "nodemon",
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,13 @@
     "url": "https://github.com/VoraciousScroll/VoraciousScroll/issues"
   },
   "homepage": "https://github.com/VoraciousScroll/VoraciousScroll#readme",
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-hackreactor": "hackreactor-labs/eslint-config-hackreactor",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-eslint": "^19.0.0"
+  },
   "dependencies": {
     "angular": "^1.5.8",
     "angular-route": "^1.5.8",
