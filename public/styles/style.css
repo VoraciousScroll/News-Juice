@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 @import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|EB+Garamond';
 
+=======
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|Yatra+One';
+>>>>>>> 915d8d6dfc63afa326b2c6b50033950936cd0e07
 h1 {
   font-family: 'Playfair Display SC', serif;
   text-align: center;
@@ -89,7 +93,7 @@ span.trend-topic {
 .dropdown-image > img {
   height: 64px;
   max-width: 64px;
-}
+
 
 /* Results Graph */
 
@@ -135,4 +139,20 @@ div.tooltip {
 .tooltip-target {
   fill: black;
   fill-opacity: 0.1;
+}
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.svg-content-responsive {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
