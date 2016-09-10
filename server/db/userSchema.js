@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/voraciousscroll');
-var Schema = mongoose.Schema;
-var util = require('./helperFunctions');
+var util = require('../config/helperFunctions.js');
 
-var userSchema = new Schema({
+var userSchema = new mongoose.Schema({
   _facebookUniqueID: String,
   firstname: String,
   lastname: String,
@@ -34,4 +32,4 @@ User.findOrCreateUser = function(profile, callback) {
   });
 };
 
-exports.User = User;
+module.exports = User;

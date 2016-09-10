@@ -11,14 +11,5 @@ module.exports = function(app, express) {
     saveUninitialized: false,
     resave: true,
   }));
-  // app.use(function(req, res, next) {
-  //   console.log(req.session, '<--------- Session');
-  //   next();
-  // });
   app.use(express.static(__dirname + '/../../public'));
 };
-
-
-// app.use(funtion(req, res, next) {
-  // console.log(req.session)
-//})
