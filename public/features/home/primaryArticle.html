@@ -1,18 +1,21 @@
-<h2 class="article-title">{{ news[0].title }}</h2>
+<h2 class="article-title">
+  <a ng-href="{{ news[0].links.permalink }}">
+    {{ news[0].title }}
+  </a>
+  <span class="save-button">
+    <button class="btn btn-default">
+      Save Article
+    </button>
+  </span>
+</h2>
+
 <div class="article-subheading">
-  <div>
-    <span>
-      {{ news[0].author.name }}
-    </span>
-    <span class="save-button">
-      <button class="btn btn-default">
-        Save Article
-      </button>
-    </span>
-  </div>
-  <div>
+  <span>
+    {{ news[0].source.name }}
+  </span>
+  <span class="article-date">
     {{ news[0].publishedAt | date:'medium' }}
-  </div>
+  </span>
 </div>
 
 <div class="article-body">
@@ -20,5 +23,7 @@
   <p>
     {{ news[0].body }}
   </p>
-  <a href="{{ news[0].links.permalink }}">{{ news[0].source.name }}</a>
+  <div class="article-author">
+    {{ news[0].author.name }}
+  </div>
 </div>

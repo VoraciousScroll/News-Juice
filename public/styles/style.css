@@ -16,6 +16,16 @@ h1 > a:hover {
   color: black;
 }
 
+h2 > a {
+  text-decoration: none;
+  color: black;
+}
+
+h2 > a:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .link {
   cursor: pointer;
 }

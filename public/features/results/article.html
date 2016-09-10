@@ -1,7 +1,7 @@
 <div class="container-fluid article-preview" ng-repeat="article in articles">
 
   <h2 class="article-title">
-    {{ article.title }}
+    <a ng-href="{{ article.links.permalink }}"> {{ article.title }} </a>
     <span class="save-button">
       <button class="btn btn-default">
         Save Article
