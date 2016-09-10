@@ -27,9 +27,8 @@ h4 {
   float: left;
 }
 
-.articleImg {
-  align-items: flex-end;
-  justify-content: space-around;
+td.articleImg {
+  text-align: right;
 } 
 
 .trendArticle {
