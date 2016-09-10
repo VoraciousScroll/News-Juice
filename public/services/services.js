@@ -16,17 +16,12 @@ angular.module('smartNews.services', [])
     data = dataObj.data.timeSeries;
 
     // set graph dimensions and margins
-    // var margin = { top: 20, right: 20, bottom: 30, left: 50 };
-    
-    // delete this when testing is complete
-    var margin = { top: 0, right: 0, bottom: 0, left: 0 };
+    var margin = { top: 50, right: 50, bottom: 50, left: 50 };
 
     // fixed size graph:
     var graph = document.getElementById('graph');
-    // var width = window.innerWidth - margin.left - margin.right;
-    // var height = 200 - margin.top - margin.bottom;
-    var width = 500
-    var height = 500;
+    var width = window.innerWidth - margin.left - margin.right;
+    var height = window.innerHeight - margin.top - margin.bottom;
 
     // parse UTC date/time
     var parseTime = d3.timeParse('%Y-%m-%dT%H:%M:%S.%LZ');
@@ -36,30 +31,17 @@ angular.module('smartNews.services', [])
     var x = d3.scaleTime().range([0, width]);
     var y = d3.scaleLinear().range([height, 0]);
 
-    // // append svg graph object to div with id='graph'
-    // var svg = d3.select('#graph')
-    //   .append('svg')
-    //   .attr('width', width + margin.left + margin.right)
-    //   .attr('height', height + margin.top + margin.bottom)
-    //   // append group element
-    //   .append('g')
-    //   // move group element to top left margin
-    //   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-    var widthz = 2000;
-    var heightz = 2000;
-
     var svg = d3.select('#graph')
       .append('div')
       .classed('svg-container', true) //container class to make it responsive
-      .append('svg')
-      //responsive SVG needs these 2 attributes and no width and height attr
-      .attr('preserveAspectRatio', 'xMinYMin meet')
-      // .attr('viewBox', '0 0 ' + width + ' ' + height)
-      .attr('viewBox', '0 0 1000 1000')
+      .append('svg') // responsive SVG needs these two attr's and an absence of height and width attr's
+      .attr('preserveAspectRatio', 'xMinYMin meet') // preserves aspect ratio by 'fitting' the viewbox to the viewport, rather than filling
+      .attr('viewBox', '0 0 ' + (window.innerWidth) + ' ' + (window.innerHeight))
+      // append group element
       .append('g')
-      //class to make it responsive
-      .classed('svg-content-responsive', true);
+      // center group element by subtracting viewbox distance from viewport distance, halving, and spacing that many pixels
+      .attr('transform', 'translate(' + ((window.innerWidth - width) / 2) + ',' + ((window.innerHeight - height) / 2) + ')')
+      .classed("svg-content-responsive", true);
 
     // div element for tooltip
     var div = d3.select('#graph').append('div')
@@ -130,6 +112,7 @@ angular.module('smartNews.services', [])
     // add y-axis labels
     svg.append('g')
       .attr('class', 'axis')
+      .attr('transform', 'translate(0,' + '0' + ')')
       .call(d3.axisLeft(y));
   };
 

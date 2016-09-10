@@ -1,5 +1,4 @@
 @import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|Yatra+One';
-
 h1 {
   font-family: 'Playfair Display SC', serif;
   text-align: center;
@@ -20,15 +19,17 @@ h4 {
   text-align: center;
 }
 
-
 .upperdiv.container {
   margin: 30px auto;
 }
 
+
 /*Search Bar*/
+
 .searchbar.form-control {
   border-radius: 0
 }
+
 
 /* Results Graph */
 
@@ -77,16 +78,17 @@ div.tooltip {
 }
 
 .svg-container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%; /* aspect ratio */
-    vertical-align: top;
-    overflow: hidden;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: top;
+  overflow: hidden;
 }
+
 .svg-content-responsive {
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    left: 0;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
