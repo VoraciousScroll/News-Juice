@@ -14,9 +14,9 @@
         class="searchbar form-control"
         placeholder="Enter Search Keyword"
         ng-model="searchinput"
-        ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 600, 'blur': 0 } }"
         uib-typeahead="item.title for item in getDropdown($viewValue)"
         typeahead-template-url="customTemplate.html"
+        typeahead-on-select="renderView()"
       />
     </div>
     <pre>Stories: <span ng-bind="searchinput"></span></pre>
