@@ -1,6 +1,18 @@
 <div ng-repeat="article in articles">
   <h2>{{ article.title }}</h2>
-  <img class="col-sm-8" ng-src="{{ article.media[0].url }}">
-  <p>{{ article.body }}</p>
-  <a href="{{ article.links.permalink }}">{{ article.source.name }}</a>
+  <div class="row">
+    <span class="col-sm-2 offset-sm-4">{{ article.author.name }}</span>
+  </div>
+  <div class="row">
+    <span class="col-sm-2 offset-sm-4">{{ article.publishedAt | date:'medium' }}</span>
+  </div>
+  <div class="row">
+    <a class="col-sm-2" href="{{ article.links.permalink }}">{{ article.source.name }}</a>
+  </div>
+  <div class="row">
+    <img class="col-sm-4" ng-src="{{ article.media[0].url }}">
+    <p class="col-sm-8 offset-sm-3">{{ article.body }}</p>
+  </div>
 </div>
+<hr>
+{{ articles }}  
