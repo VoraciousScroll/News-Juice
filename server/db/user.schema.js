@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-// var util = require('../config/helperFunctions.js');
 
 var fbProfile = function (fbProfile) {
   return {

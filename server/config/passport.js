@@ -5,7 +5,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 /****** REQUIRE DATABASE ******/
 var db = require('../db/config.js');
-var User = require('../db/userSchema.js');
+var User = require('../db/user.schema.js');
 /****************** PASSPORT CONFIG ***************/
 
 passport.use(new FacebookStrategy({

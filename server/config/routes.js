@@ -4,14 +4,15 @@ var passport = require('./passport.js');
 var aylien = require('../news-apis/aylien-helpers.js');
 var googleTrends = require('../news-apis/google-trends-helpers.js');
 var request = require('request');
+var article = require('../db/article.schema.js');
 
 module.exports = function(app, express) {
 
 /**************** AUTOCOMPLETE *****************/
   app.route('/input/:input')
-    .get(function(req,res){
+    .get(function(req, res) {
       var url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=pageprops%7Cpageimages%7Cpageterms&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=5&wbptterms=description&gpssearch=' + req.params.input + '&gpsnamespace=0&gpslimit=5';
-      request(url, function(err, resp, body){
+      request(url, function(err, resp, body) {
         if (err) {
           console.log('there was an error requesting via express', err);
         } else {
@@ -46,8 +47,8 @@ module.exports = function(app, express) {
   // http://localhost/3000/see-article?input=obama&start=[startdate]&end=[enddate]
   app.route('/seearticle')
     .get(function(req, res) {
-      var passport = req.session.passport;
-      console.log(passport, 'THIS IS MY PASSPORT');
+      var yoyo = req.headers['x-xsrf-token'];
+      console.log(yoyo, 'THIS IS MY PASSPORT');
       aylien.articleImport(req.query.input, res, req.query.start, req.query.end, req.query.limit);
     });
 
@@ -69,6 +70,13 @@ module.exports = function(app, express) {
       googleTrends.hotTrendsDetail(res, 10, 'US');
     });
 
+  /************************ SAVE ARTICLE **********************************/
+  app.route('/saveArticle/:input')
+    .post(function(req, res) {
+      console.log('Received get on /saveArticle/:input from app.route on routes.js');
+      res.send('WHAT UP');
+    });
+    
 
   // Error handling: send log the error and send status 500. This handles one error.
   app.use(function(err, req, res, next) {
