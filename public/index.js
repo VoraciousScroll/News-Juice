@@ -72,30 +72,6 @@ angular.module('smartNews', [
     });
   };
 
-  $scope.renderDropdown = function(){
-    if ($scope.searchinput){
-      $http({
-        method: 'GET',
-        url: '/input/' + $scope.searchinput
-      })
-      .then(function(data){
-        console.log('WE GOT ZE data: ', data.data);
-        var pages = data.data.query.pages;
-
-        for (var i in pages){
-          $scope.dropdown = [];
-          $scope.dropdown.push({
-            title: pages[i].title,
-            image: pages[i].thumbnail ? pages[i].thumbnail.source : ""
-          });
-        }
-
-      });
-    } else {
-      $state.go('main.home');
-    }
-  };
-
   $scope.renderView = function() {
     var url = '/results/' + $scope.searchinput;
     if ($scope.searchinput) {
