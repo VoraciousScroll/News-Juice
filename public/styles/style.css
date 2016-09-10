@@ -82,29 +82,61 @@ li.trend-listing {
 
 /* Article */
 
+.save-button {
+  float: right;
+}
+
 .article-title {
   font-family: 'EB Garamond', serif;
   font-size: 30px;
+  padding-right: 10px;
 }
 
-.article-image.col-xs-7 {
+.article-image {
   padding-left: 0px;
+  max-width: 95%;
+  max-height: 95%;
 }
 
-.article-author {
+.article-subheading {
   font-family: 'EB Garamond', serif;
   font-size: 16px;
+  padding: 5px 10px 7px 0px;
 }
 
-.article-date {
-  font-family: 'EB Garamond', serif;
-  font-size: 16px;
+.article-source {
+
 }
 
-p.article-body {
+.article-body {
   font-family: 'EB Garamond', serif;
   font-size: 16px;
   text-align: justify;
+}
+
+.article-author {
+  text-align: right;
+}
+
+/* Article Preview */
+
+.article-body-preview {
+  height: 250px;
+}
+
+.article-preview-left {
+  position: relative;
+  padding: 10px 0px;
+}
+
+.article-date {
+  float: right;
+}
+
+.article-preview-right {
+  position: relative;
+  height: 100%;
+  overflow: scroll;
 }
 
 /* Search Bar */
