@@ -71,12 +71,6 @@ angular.module('smartNews.home', [])
 })
 
 // Sub-Views
-.directive('homechart', function(){
-  return {
-    templateUrl: 'features/home/chart.html',
-    controller: 'HomeChartCtrl'
-  };
-})
 .directive('primaryarticle', function(){
   return {
     templateUrl: 'features/home/primaryArticle.html',
