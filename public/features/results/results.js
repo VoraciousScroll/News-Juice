@@ -1,10 +1,10 @@
 angular.module('smartNews.results', [])
 
 .controller('ResultsCtrl', function($scope, $stateParams, $http) {
-
-  $scope.articles = testData;
-  $scope.articleReceived = true;
-  // $scope.articleReceived = $stateParams.articleReceived;
+  /***** TESTING *****/
+  // $scope.articles = testData;
+  // $scope.articleReceived = true;
+  $scope.articleReceived = $stateParams.articleReceived;
   $scope.test = 'This is the Results View hi hi';
 
   $scope.getArticle = function() {
@@ -15,18 +15,18 @@ angular.module('smartNews.results', [])
 
     var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
 
-    // $http({
-    //   method: 'GET',
-    //   url: url
-    // }).then(
-    //   function(data) {
-    //     $scope.articleReceived = true;
-    //     // $scope.article = data.data.stories;
-    //   },
-    //   function(err) {
-    //     console.log('THERE WAS AN ERROR RECEIVING DATA FROM SEEARTICLE', err);
-    //   }
-    // );
+    $http({
+      method: 'GET',
+      url: url
+    }).then(
+      function(data) {
+        $scope.articleReceived = true;
+        $scope.articles = data.data.stories;
+      },
+      function(err) {
+        console.log('THERE WAS AN ERROR RECEIVING DATA FROM SEEARTICLE', err);
+      }
+    );
   };
 })
 .directive('resultarticle', function() {
