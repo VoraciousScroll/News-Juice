@@ -7,10 +7,9 @@ angular.module('smartNews.home')
 
     var title = sanitizeTitle(topic.articleTitle);
     TopTrendsFactory.getPrimaryArticle(title)
-      .then(function (article) {
-        var article = article.data.stories[0];
-        TopTrendsFactory.primaryArticle[0] = article;
-      });
+    .then(function (article) {
+      TopTrendsFactory.primaryArticle[0] = article.data.stories[0];
+    });
   };
 
 });
