@@ -1,5 +1,15 @@
 var mongoose = require('mongoose');
-var util = require('../config/helperFunctions.js');
+// var util = require('../config/helperFunctions.js');
+
+var fbProfile = function (fbProfile) {
+  return {
+    _facebookUniqueID: fbProfile.id,
+    firstname: fbProfile.name.givenName,
+    lastname: fbProfile.name.familyName,
+    picture: fbProfile.photos[0].value,
+    gender: fbProfile.gender
+  };
+};
 
 var userSchema = new mongoose.Schema({
   _facebookUniqueID: String,
@@ -17,7 +27,7 @@ User.findOrCreateUser = function(profile, callback) {
       console.log('ERROR: ', error);
       callback(error);
     } else if (!user) {
-      User.create(util.profile(profile), function(error, user) {
+      User.create(fbProfile(profile), function(error, user) {
         if (error) {
           console.log('ERROR: ', error);
           callback(error);
@@ -31,5 +41,7 @@ User.findOrCreateUser = function(profile, callback) {
     } 
   });
 };
+
+
 
 module.exports = User;
