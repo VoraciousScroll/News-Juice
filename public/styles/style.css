@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|Yatra+One';
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|EB+Garamond';
 
 h1 {
   font-family: 'Playfair Display SC', serif;
@@ -27,28 +27,51 @@ h2 {
   float: left;
 }
 
-td.articleImg {
-  text-align: right;
-} 
-
-.trendArticle {
-  border-width: 1px;
-  border-color: lightgrey;
-  border-radius: 5px;
-  border-style: solid;
-}
-
-.trendArticle img {
-  align: right;
-  max-width: 200px;
-  border: 10px 10px;
-}
-
 .upperdiv.container {
   margin: 30px auto;
 }
 
-/*Search Bar*/
+/* Trend Chart */
+
+#top-trends-div {
+  font-family: 'EB Garamond', serif;
+}
+
+#top-trends-div > h3 {
+  font-size: 30px;
+  margin-top: 0px;
+  padding-left: 5px;
+  margin-bottom: 22px;
+}
+
+#trend-list {
+  padding-left: 10px;
+}
+
+li.trend-listing {
+  list-style: none;
+  margin: 5px 0;
+}
+
+.trend-rank {
+  display: inline-block;
+  font-size: 24px;
+  min-width: 20px;
+}
+
+.trend-image {
+  max-width: 200px;
+  border-radius: 6px;
+  margin: 5px;
+  margin-right: 15px;
+}
+
+span.trend-topic {
+  font-size: 20px;
+}
+
+/* Search Bar */
+
 .searchbar.form-control {
   border-radius: 0
 }
