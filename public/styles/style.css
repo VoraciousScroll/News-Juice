@@ -16,7 +16,31 @@ h1 > a:hover {
 }
 
 h4 {
-  text-align: center;
+  text-align: left;
+  display: inline
+}
+
+.primaryImg {
+  max-width: 200px;
+  border: 10px 10px;
+  float: left;
+}
+
+td.articleImg {
+  text-align: right;
+} 
+
+.trendArticle {
+  border-width: 1px;
+  border-color: lightgrey;
+  border-radius: 5px;
+  border-style: solid;
+}
+
+.trendArticle img {
+  align: right;
+  max-width: 200px;
+  border: 10px 10px;
 }
 
 .upperdiv.container {
@@ -30,6 +54,19 @@ h4 {
   border-radius: 0
 }
 
+.dropdown-menu>li>a {
+}
+
+.dropdown-image {
+  width: 64px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.dropdown-image > img {
+  height: 64px;
+  max-width: 64px;
 
 /* Results Graph */
 

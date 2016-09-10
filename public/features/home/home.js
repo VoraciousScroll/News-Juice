@@ -1,6 +1,6 @@
 angular.module('smartNews.home', [])
 
-.factory('TopTrendsFactory', function($http) {
+.factory('TopTrendsFactory', function($http, $sanitize) {
   var topTrends = [];
   var primaryArticle = [];
 
@@ -15,6 +15,20 @@ angular.module('smartNews.home', [])
     };
   };
 
+  var getPrimaryArticle = function(topic) {
+    var publishStart = 'NOW-2DAYS';
+    var publishEnd = 'NOW';
+
+    var url = '/seearticle?input=' + topic + '&start=' + publishStart + '&end=' + publishEnd + '&limit=1';
+    return $http({
+      method: 'GET',
+      url: url
+    })
+    .then(function(article) {
+      return article;
+    });
+  };
+
   var topTrendsGoogleTrends = function () {
     return $http({
       method: 'GET',
@@ -22,8 +36,13 @@ angular.module('smartNews.home', [])
     })
     .then(function(response) {
       response.data.forEach(function(topic, index) {
-        if (index === 0) {
-          primaryArticle.push(formattedTopic(topic));
+        if (index === 0) {      
+          var title = sanitizeTitle(formattedTopic(topic).articleTitle);
+          getPrimaryArticle(title)
+            .then(function (article) {
+              var article = article.data.stories[0];
+              primaryArticle.push(article);
+            });
         }
         topTrends.push(formattedTopic(topic));
       });
@@ -34,12 +53,20 @@ angular.module('smartNews.home', [])
     primaryArticle[0] = article;
   };
 
+  var sanitizeTitle = function(title) {
+    return title.replace('<b>', '')
+      .replace('</b>', '')
+      .replace('&#39;', '');
+  };
+
   topTrendsGoogleTrends();
 
   return {
     topTrends: topTrends,
     primaryArticle: primaryArticle,
-    setPrimaryArticle: setPrimaryArticle
+    setPrimaryArticle: setPrimaryArticle,
+    getPrimaryArticle: getPrimaryArticle,
+    sanitizeTitle: sanitizeTitle
   };
 })
 

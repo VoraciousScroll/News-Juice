@@ -6,3 +6,13 @@ node_js:
 
 install:
 - npm install
+
+notifications:
+  # docs: https://docs.travis-ci.com/user/notifications/#Email-notifications
+  email:
+    recipients:
+      - evan.goss@gmail.com
+    on_success: always # default: change (options: always, never, change)
+    on_failure: always # default: always
+  # https://evangoss.slack.com/messages/voracious_scroll/
+  slack: evangoss:QKOjf9c7sUjagkCzFWZizjUq
