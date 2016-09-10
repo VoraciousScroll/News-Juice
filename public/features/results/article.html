@@ -1,0 +1,6 @@
+<div ng-repeat="article in articles">
+  <h2>{{ article.title }}</h2>
+  <img class="col-sm-8" ng-src="{{ article.media[0].url }}">
+  <p>{{ article.body }}</p>
+  <a href="{{ article.links.permalink }}">{{ article.source.name }}</a>
+</div>

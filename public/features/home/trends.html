@@ -1,16 +1,13 @@
 <div>
-<!--   <div ng-repeat="trend in topTrends"> -->
-    <table ng-repeat="trend in topTrends" ng-click="selectArticle(trend)">
-        <td>
-          <h4>{{ trend.topic }}</h4><br/>
-          <span>{{ trend.traffic }}</span>
-        </td>
-        <td align="right" class="articleImg">
-          <img ng-src="{{ trend.img }}">
-        </td>
-
-    </table>
-<!--   </div> -->
+  <table ng-repeat="trend in topTrends" ng-click="selectArticle(trend)">
+      <td>
+        <h4>{{ trend.topic }}</h4><br/>
+        <span>{{ trend.traffic }}</span>
+      </td>
+      <td align="right" class="articleImg">
+        <img ng-src="{{ trend.img }}">
+      </td>
+  </table>
 </div>
 
 
