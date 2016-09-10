@@ -1,8 +1,13 @@
-<div>
-  <h2>{{ news[0].title }}</h2>
-  <div>{{ news[0].author.name }}</div>
-  <div>{{ news[0].publishedAt | date:'medium'  }}</div>
-  <img class="col-sm-8" ng-src="{{ news[0].media[0].url }}">
-  <p>{{ news[0].body }}</p>
-  <a href="{{ news[0].links.permalink }}">{{ news[0].source.name }}</a>
+<h2 class="article-title">{{ news[0].title }}</h2>
+
+
+<div class="article-author">
+  {{ news[0].author.name }}
 </div>
+<div class="article-date">
+  {{ news[0].publishedAt | date:'medium' }}
+</div>
+
+<img class="article-image col-xs-7" ng-src="{{ news[0].media[0].url }}">
+<p class="article-body">{{ news[0].body }}</p>
+<a href="{{ news[0].links.permalink }}">{{ news[0].source.name }}</a>

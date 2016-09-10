@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 @import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|EB+Garamond';
 
-=======
-@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|Yatra+One';
->>>>>>> 915d8d6dfc63afa326b2c6b50033950936cd0e07
 h1 {
   font-family: 'Playfair Display SC', serif;
   text-align: center;
@@ -20,9 +16,8 @@ h1 > a:hover {
   color: black;
 }
 
-h2 {
-  text-align: center;
-  display: inline
+.link {
+  cursor: pointer;
 }
 
 .primaryImg {
@@ -35,6 +30,14 @@ h2 {
   margin: 30px auto;
 }
 
+#home-left-div {
+  padding-left: 0px;
+}
+
+#home-right-div {
+  padding-right: 10px;
+}
+
 /* Trend Chart */
 
 #top-trends-div {
@@ -42,8 +45,7 @@ h2 {
 }
 
 #top-trends-div > h3 {
-  font-size: 30px;
-  margin-top: 0px;
+  font-size: 26px;
   padding-left: 5px;
   margin-bottom: 22px;
 }
@@ -70,8 +72,39 @@ li.trend-listing {
   margin-right: 15px;
 }
 
-span.trend-topic {
+.trend-topic {
   font-size: 20px;
+}
+
+.trend-traffic {
+  font-size: 16px;
+}
+
+/* Article */
+
+.article-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 30px;
+}
+
+.article-image.col-xs-7 {
+  padding-left: 0px;
+}
+
+.article-author {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+}
+
+.article-date {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+}
+
+p.article-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  text-align: justify;
 }
 
 /* Search Bar */
