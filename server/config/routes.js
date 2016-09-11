@@ -69,11 +69,6 @@ module.exports = function(app, express) {
 
   /************************ SAVE ARTICLE **********************************/
   app.route('/saveArticle')
-    .get(function(req, res) {
-      db.saveArticle.get(res, function(error, success) {
-        res.send('GET yo');
-      });
-    })
     .post(function(req, res) {
       db.saveArticle.post(req, function(error, success) {
         if (error) {
@@ -81,6 +76,13 @@ module.exports = function(app, express) {
         } else {
           res.send({article: success});
         }
+      });
+    });
+
+  app.route('/profile')
+    .get(function(req, res) {
+      db.profile.get(req, function(error, success) {
+        res.send(success);
       });
     });
     
