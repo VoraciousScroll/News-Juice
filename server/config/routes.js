@@ -68,10 +68,17 @@ module.exports = function(app, express) {
 
   /************************ SAVE ARTICLE **********************************/
   app.route('/saveArticle')
+    .get(function(req, res) {
+      db.saveArticle.get(res, function(error, success) {
+        res.send('GET yo');
+      });
+    })
     .post(function(req, res) {
       db.saveArticle.post(req, function(error, success) {
         if (error) {
           res.sendStatus(501);
+        } else if (!success) { 
+          res.redirect(307, 'http://localhost:3000/auth/facebook');
         } else {
           res.send({article: success});
         }

@@ -11,9 +11,10 @@ var fbProfile = function (fbProfile) {
 };
 
 var getUserObj = function(req) {
-  if (req.headers['x-xsrf-token']) {
-    return JSON.parse(req.headers['x-xsrf-token'].slice(2)).user;
-  } 
+  console.log(req)
+  // if (req.headers['x-xsrf-token']) {
+    // return JSON.parse(req.headers['x-xsrf-token'].slice(2)).user;
+  // } 
   return null;
 };
 
@@ -71,6 +72,19 @@ User.saveArticle = function(req, callback) {
   }
 };
 
+
+User.getArticles = function(req, callback) {
+  if (getUserObj(req)) {
+    User.findOne({_facebookUniqueID: getUserObj(req)._facebookUniqueID}, function(error, user) {
+      if (error) {
+        callback(error);
+      } else {
+        console.log(user, 'this is the user');
+        callback(null, user.articles);
+      }
+    });
+  }
+};
 
 
 module.exports = User;
