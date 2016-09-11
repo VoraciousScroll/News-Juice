@@ -16,7 +16,15 @@ var userSchema = new mongoose.Schema({
   lastname: String,
   picture: String,
   gender: String,
-  articles: Array
+  articles: [{
+    title: String,
+    author: String,
+    publishDate: Date,
+    articleLink: String,
+    articleSource: String,
+    img: String,
+    body: String
+  }]
 });
 
 var User = mongoose.model('User', userSchema);
@@ -41,6 +49,8 @@ User.findOrCreateUser = function(profile, callback) {
     } 
   });
 };
+
+User.saveArticle = function()
 
 
 
