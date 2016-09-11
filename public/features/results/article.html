@@ -1,3 +1,47 @@
+<div class="container-fluid article-preview" ng-repeat="article in articles">
+
+  <h2 class="article-title">
+    <a ng-href="{{ article.links.permalink }}"> {{ article.title }} </a>
+    <span class="save-button">
+      <button class="btn btn-default">
+        Save Article
+      </button>
+    </span>
+  </h2>
+
+  <div class="article-subheading">
+    <span class="article-source">
+      {{ article.source.name }}
+    </span>
+    <span class="article-date">
+      {{ article.publishedAt | date:'medium' }}
+    </span>
+  </div>
+
+  <div class="article-body article-body-preview">
+    <div class="col-sm-4 article-preview-left">
+      <img ng-src="{{ article.media[0].url }}" alt="" class="article-image">
+    </div>
+    <div class="col-sm-8 article-preview-right">
+      <div>
+        {{ article.body }}
+      </div>
+      <div class="article-author">
+        <br />{{ article.author.name }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+</script>
+
+
+
+
+<!--
+
 <div class="container-fluid" ng-repeat="article in articles">
   <h2>{{ article.title }}</h2>
   <div class="row">
@@ -13,4 +57,4 @@
   <div class="row">
     <a class="col-sm-2 offset-sm-10" href="{{ article.links.permalink }}">{{ article.source.name }}</a>
   </div>
-</div>
+</div> -->
