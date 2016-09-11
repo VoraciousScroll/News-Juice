@@ -22,12 +22,12 @@ angular.module('smartNews.services', [])
     };
 
     // set graph dimensions and margins
-    var margin = { top: 50, right: 50, bottom: 50, left: 50 };
+    var margin = { top: 0, right: 50, bottom: 50, left: 50 };
 
     // fixed size graph. These values are shorter than true innerWidth / innerHeight:
     var graph = document.getElementById('graph');
     var width = window.innerWidth - margin.left - margin.right;
-    var height = window.innerHeight - margin.top - margin.bottom;
+    var height = window.innerHeight*.5 - margin.top - margin.bottom;
 
     // parse UTC date/time
     var parseTime = d3.timeParse('%Y-%m-%dT%H:%M:%S.%LZ');
@@ -47,7 +47,7 @@ angular.module('smartNews.services', [])
       // append group element
       .append('g')
       // center group element on page by subtracting viewbox length from viewport length, halving, and spacing that many pixels
-      .attr('transform', 'translate(' + ((window.innerWidth - width) / 2) + ',' + ((window.innerHeight - height) / 2) + ')')
+      .attr('transform', 'translate(' + ((window.innerWidth - width) / 2) + ',0)')
       .classed("svg-content-responsive", true);
 
 
