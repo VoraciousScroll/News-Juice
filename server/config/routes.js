@@ -4,6 +4,7 @@ var passport = require('./passport.js');
 var aylien = require('../news-apis/aylien-helpers.js');
 var googleTrends = require('../news-apis/google-trends-helpers.js');
 var request = require('request');
+var db = require('./db.controller.js');
 
 module.exports = function(app, express) {
 
@@ -57,25 +58,24 @@ module.exports = function(app, express) {
 
   app.route('/api/news/topTrends')
     .get(function(req, res) {
-      console.log('Received get on /api/news/topTrends from app.route on routes.js');
       googleTrends.hotTrends(res, 10, 'US');
     });
 
   app.route('/api/news/topTrendsDetail')
     .get(function(req, res) {
-      console.log('Received get on /api/news/topTrendsDetail from app.route on routes.js');
-      var yoyo = req.headers['x-xsrf-token'];
-      console.log(yoyo, 'THIS IS MY PASSPORT');
       googleTrends.hotTrendsDetail(res, 10, 'US');
     });
 
   /************************ SAVE ARTICLE **********************************/
   app.route('/saveArticle')
     .post(function(req, res) {
-      console.log('Received get on /saveArticle/:input from app.route on routes.js');
-      var yoyo = req.headers['x-xsrf-token'];
-      console.log(yoyo, 'THIS IS MY PASSPORT');
-      res.send('WHAT UP');
+      db.saveArticle.post(req, function(error, success) {
+        if (error) {
+          res.sendStatus(501);
+        } else {
+          res.send({article: success});
+        }
+      });
     });
     
 
