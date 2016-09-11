@@ -4,7 +4,6 @@ var passport = require('./passport.js');
 var aylien = require('../news-apis/aylien-helpers.js');
 var googleTrends = require('../news-apis/google-trends-helpers.js');
 var request = require('request');
-var article = require('../db/article.schema.js');
 
 module.exports = function(app, express) {
 
@@ -76,7 +75,6 @@ module.exports = function(app, express) {
       console.log('Received get on /saveArticle/:input from app.route on routes.js');
       var yoyo = req.headers['x-xsrf-token'];
       console.log(yoyo, 'THIS IS MY PASSPORT');
-      article.saveArticle(req, res);
       res.send('WHAT UP');
     });
     

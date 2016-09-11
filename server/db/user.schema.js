@@ -15,7 +15,8 @@ var userSchema = new mongoose.Schema({
   firstname: String,
   lastname: String,
   picture: String,
-  gender: String
+  gender: String,
+  articles: Array
 });
 
 var User = mongoose.model('User', userSchema);
