@@ -11,7 +11,7 @@ angular.module('smartNews', [
   'ui.bootstrap'
 ])
 
-.config(function($urlRouterProvider, $stateProvider){
+.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
 
   $stateProvider
     .state('main', {
@@ -41,7 +41,21 @@ angular.module('smartNews', [
     });
 
   $urlRouterProvider.otherwise('/main/home');
-
+  $httpProvider.interceptors.push('requestCookie');
+})
+.factory('requestCookie', function ($document, $cookies) {
+  // console.log('this factory');
+  return {
+    request: function (request) {
+      // var parsedCookie = $cookies.get('authenticate');
+      // console.log(parsedCookie, 'This is my document');
+      // // config.headers['x-session-token'] = SessionService.token
+      // // request.session.passport = parsedCookie;
+      request.xsrfCookieName = 'authenticate';
+      // console.log(request, 'My request object');
+      return request;
+    }
+  }
 })
 
 .directive('navbar', function(){

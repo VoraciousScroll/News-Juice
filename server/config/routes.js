@@ -9,9 +9,9 @@ module.exports = function(app, express) {
 
 /**************** AUTOCOMPLETE *****************/
   app.route('/input/:input')
-    .get(function(req,res){
+    .get(function(req, res) {
       var url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=pageprops%7Cpageimages%7Cpageterms&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=5&wbptterms=description&gpssearch=' + req.params.input + '&gpsnamespace=0&gpslimit=5';
-      request(url, function(err, resp, body){
+      request(url, function(err, resp, body) {
         if (err) {
           console.log('there was an error requesting via express', err);
         } else {
@@ -46,8 +46,6 @@ module.exports = function(app, express) {
   // http://localhost/3000/see-article?input=obama&start=[startdate]&end=[enddate]
   app.route('/seearticle')
     .get(function(req, res) {
-      console.log(req.url, 'URL STRING');
-      console.log(req.query, 'QUERY STRING');
       aylien.articleImport(req.query.input, res, req.query.start, req.query.end, req.query.limit);
     });
 
@@ -66,9 +64,20 @@ module.exports = function(app, express) {
   app.route('/api/news/topTrendsDetail')
     .get(function(req, res) {
       console.log('Received get on /api/news/topTrendsDetail from app.route on routes.js');
+      var yoyo = req.headers['x-xsrf-token'];
+      console.log(yoyo, 'THIS IS MY PASSPORT');
       googleTrends.hotTrendsDetail(res, 10, 'US');
     });
 
+  /************************ SAVE ARTICLE **********************************/
+  app.route('/saveArticle')
+    .post(function(req, res) {
+      console.log('Received get on /saveArticle/:input from app.route on routes.js');
+      var yoyo = req.headers['x-xsrf-token'];
+      console.log(yoyo, 'THIS IS MY PASSPORT');
+      res.send('WHAT UP');
+    });
+    
 
   // Error handling: send log the error and send status 500. This handles one error.
   app.use(function(err, req, res, next) {

@@ -14,7 +14,7 @@ angular.module('smartNews.results', [])
     var publishEnd = 'NOW';
 
     var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
-
+    console.log(url, 'HITHSIHIS')
     $http({
       method: 'GET',
       url: url
