@@ -2,8 +2,8 @@
 
   <h2 class="article-title">
     <a ng-href="{{ article.links.permalink }}"> {{ article.title }} </a>
-    <span class="save-button">
-      <button class="btn btn-default">
+    <span class="save-button" ng-show="isAuth()">
+      <button ng-click="clickSave(article)" class="btn btn-default">
         Save Article
       </button>
     </span>
