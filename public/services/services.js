@@ -8,11 +8,11 @@
 
 // 2: Set up graph to start from the middle of y-axes rather than bottom
 
-angular.module('smartNews.services', [])
+angular.module('smartNews.services', ['ngCookies'])
 
 .factory('renderGraph', function() {
 
-  var renderGraph = function(dataObj) {
+  return function(dataObj) {
     data = dataObj.data.timeSeries;
 
     //clear out contents of graph prior to rendering, to prevent stacking graphs
@@ -125,7 +125,35 @@ angular.module('smartNews.services', [])
       .call(d3.axisLeft(y));
   };
 
-  return renderGraph;
+})
+
+.factory('isAuth', function($cookies){
+  return function(){
+    var auth = $cookies.get('authenticate');
+    if (auth && auth !== 'undefined') {
+      var parsedAuth = JSON.parse(auth.slice(2)).user;
+      return {
+        firstname: parsedAuth.firstname,
+        lastname: parsedAuth.lastname,
+        picture: parsedAuth.picture,
+      };
+    }
+    return null;
+  };
+})
+
+.factory('saveArticle', function($http){
+  return function(article){
+    $http({
+      method: 'POST',
+      data: article,
+      url: '/saveArticle'
+    })
+    .then(function(data){
+      console.log('success posting', data);
+    })
+  }
+
 })
 
 .factory('TopTrendsFactory', function($http, $sanitize) {
