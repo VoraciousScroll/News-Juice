@@ -14,7 +14,7 @@ angular.module('smartNews.services', [])
 
   var renderGraph = function(dataObj) {
     data = dataObj.data.timeSeries;
-console.log('running rendergraph');
+
     //clear out contents of graph prior to rendering, to prevent stacking graphs
     if (window.graph.innerHTML !== undefined) {
       window.graph.innerHTML = '';
