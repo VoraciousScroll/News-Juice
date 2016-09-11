@@ -11,7 +11,7 @@
 angular.module('smartNews.services', [])
 
 .factory('renderGraph', function() {
-
+  
   var renderGraph = function(dataObj) {
     data = dataObj.data.timeSeries;
 
@@ -124,6 +124,8 @@ angular.module('smartNews.services', [])
       .attr('transform', 'translate(0,' + '0' + ')')
       .call(d3.axisLeft(y));
   };
+  
+  // window.renderGraphWin = renderGraph;
 
   return renderGraph;
 })
@@ -132,7 +134,7 @@ angular.module('smartNews.services', [])
   var topTrends = [];
   var primaryArticle = [];
 
-  var formattedTopic = function (topic) {
+  var formattedTopic = function(topic) {
     return {
       topic: topic.title[0],
       articleTitle: topic['ht:news_item'][0]['ht:news_item_title'][0],
@@ -149,34 +151,34 @@ angular.module('smartNews.services', [])
 
     var url = '/seearticle?input=' + topic + '&start=' + publishStart + '&end=' + publishEnd + '&limit=1';
     return $http({
-      method: 'GET',
-      url: url
-    })
-    .then(function(article) {
-      return article;
-    });
-  };
-
-  var topTrendsGoogleTrends = function () {
-    return $http({
-      method: 'GET',
-      url: '/api/news/topTrendsDetail'
-    })
-    .then(function(response) {
-      response.data.forEach(function(topic, index) {
-        if (index === 0) {
-          var title = sanitizeTitle(formattedTopic(topic).articleTitle);
-          getPrimaryArticle(title)
-            .then(function (article) {
-              primaryArticle.push(article.data.stories[0]);
-            });
-        }
-        topTrends.push(formattedTopic(topic));
+        method: 'GET',
+        url: url
+      })
+      .then(function(article) {
+        return article;
       });
-    });
   };
 
-  var setPrimaryArticle = function (article) {
+  var topTrendsGoogleTrends = function() {
+    return $http({
+        method: 'GET',
+        url: '/api/news/topTrendsDetail'
+      })
+      .then(function(response) {
+        response.data.forEach(function(topic, index) {
+          if (index === 0) {
+            var title = sanitizeTitle(formattedTopic(topic).articleTitle);
+            getPrimaryArticle(title)
+              .then(function(article) {
+                primaryArticle.push(article.data.stories[0]);
+              });
+          }
+          topTrends.push(formattedTopic(topic));
+        });
+      });
+  };
+
+  var setPrimaryArticle = function(article) {
     primaryArticle[0] = article;
   };
 
