@@ -16,7 +16,7 @@ var Article = mongoose.model('Article', articleSchema);
 
 Article.saveArticle = function(req, res, callback) {
   var user = req.headers['x-xsrf-token'];
-  console.log('this');
+  console.log(user, 'user object');
 };
 
 

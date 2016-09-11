@@ -47,8 +47,6 @@ module.exports = function(app, express) {
   // http://localhost/3000/see-article?input=obama&start=[startdate]&end=[enddate]
   app.route('/seearticle')
     .get(function(req, res) {
-      var yoyo = req.headers['x-xsrf-token'];
-      console.log(yoyo, 'THIS IS MY PASSPORT');
       aylien.articleImport(req.query.input, res, req.query.start, req.query.end, req.query.limit);
     });
 
@@ -67,13 +65,18 @@ module.exports = function(app, express) {
   app.route('/api/news/topTrendsDetail')
     .get(function(req, res) {
       console.log('Received get on /api/news/topTrendsDetail from app.route on routes.js');
+      var yoyo = req.headers['x-xsrf-token'];
+      console.log(yoyo, 'THIS IS MY PASSPORT');
       googleTrends.hotTrendsDetail(res, 10, 'US');
     });
 
   /************************ SAVE ARTICLE **********************************/
-  app.route('/saveArticle/:input')
+  app.route('/saveArticle')
     .post(function(req, res) {
       console.log('Received get on /saveArticle/:input from app.route on routes.js');
+      var yoyo = req.headers['x-xsrf-token'];
+      console.log(yoyo, 'THIS IS MY PASSPORT');
+      article.saveArticle(req, res);
       res.send('WHAT UP');
     });
     
