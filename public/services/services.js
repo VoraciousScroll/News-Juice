@@ -16,6 +16,7 @@ angular.module('smartNews.services', [])
     data = dataObj.data.timeSeries;
 
     //clear out contents of graph prior to rendering, to prevent stacking graphs
+    // using 'window' is necessary here due to lexical scope.
     if (window.graph.innerHTML !== undefined) {
       window.graph.innerHTML = '';
     };
