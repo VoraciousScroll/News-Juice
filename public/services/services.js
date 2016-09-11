@@ -14,11 +14,16 @@ angular.module('smartNews.services', [])
 
   var renderGraph = function(dataObj) {
     data = dataObj.data.timeSeries;
+console.log('running rendergraph');
+    //clear out contents of graph prior to rendering, to prevent stacking graphs
+    if (window.graph.innerHTML !== undefined) {
+      window.graph.innerHTML = '';
+    };
 
     // set graph dimensions and margins
     var margin = { top: 50, right: 50, bottom: 50, left: 50 };
 
-    // fixed size graph:
+    // fixed size graph. These values are shorter than true innerWidth / innerHeight:
     var graph = document.getElementById('graph');
     var width = window.innerWidth - margin.left - margin.right;
     var height = window.innerHeight - margin.top - margin.bottom;
@@ -33,15 +38,18 @@ angular.module('smartNews.services', [])
 
     var svg = d3.select('#graph')
       .append('div')
-      .classed('svg-container', true) //container class to make it responsive
-      .append('svg') // responsive SVG needs these two attr's and an absence of height and width attr's
-      .attr('preserveAspectRatio', 'xMinYMin meet') // preserves aspect ratio by 'fitting' the viewbox to the viewport, rather than filling
+      // .classed('svg-container', true) //container class to make it responsive
+      .append('svg')
+      // responsive SVG needs these two attr's and an absence of height and width attr's
+      // .attr('preserveAspectRatio', 'xMinYMin meet') // preserves aspect ratio by 'fitting' the viewbox to the viewport, rather than filling
       .attr('viewBox', '0 0 ' + (window.innerWidth) + ' ' + (window.innerHeight))
       // append group element
       .append('g')
-      // center group element by subtracting viewbox distance from viewport distance, halving, and spacing that many pixels
+      // center group element on page by subtracting viewbox length from viewport length, halving, and spacing that many pixels
       .attr('transform', 'translate(' + ((window.innerWidth - width) / 2) + ',' + ((window.innerHeight - height) / 2) + ')')
       .classed("svg-content-responsive", true);
+
+
 
     // div element for tooltip
     var div = d3.select('#graph').append('div')
@@ -118,3 +126,7 @@ angular.module('smartNews.services', [])
 
   return renderGraph;
 });
+
+
+
+// window.update = update;
