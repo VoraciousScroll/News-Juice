@@ -73,7 +73,7 @@ module.exports = function(app, express) {
         if (error) {
           res.sendStatus(501);
         } else {
-          res.send('Saved article!');
+          res.send({article: success});
         }
       });
     });

@@ -11,9 +11,10 @@ var fbProfile = function (fbProfile) {
 };
 
 var getUserObj = function(req) {
-  // var obj = req.headers['x-xsrf-token'].slice(2);
-  // console.log(JSON.parse(obj).user, 'here')
-  return JSON.parse(req.headers['x-xsrf-token'].slice(2)).user;
+  if (req.headers['x-xsrf-token']) {
+    return JSON.parse(req.headers['x-xsrf-token'].slice(2)).user;
+  } 
+  return null;
 };
 
 var userSchema = new mongoose.Schema({
@@ -55,19 +56,21 @@ User.findOrCreateUser = function(profile, callback) {
 };
 
 User.saveArticle = function(req, callback) {
-  var profile = getUserObj(req);
-  console.log(req.body, 'body');
-  User.findOneAndUpdate({_facebookUniqueID: profile._facebookUniqueID}, {$push: {articles: req.body}}, {safe: true, upsert: true},
-    function(error, article) {
-      if (error) {
-        console.log('Failure to save article', error);
-        callback(error);
-      } else {
-        console.log('Saved article', article);
-        callback(null, article);
-      }
-    });
+  if (getUserObj(req)) {
+    User.findOneAndUpdate({_facebookUniqueID: getUserObj(req)._facebookUniqueID}, {$push: {articles: req.body}}, {safe: true, upsert: true},
+      function(error, article) {
+        if (error) {
+          console.log('Failure to save article', error);
+          callback(error);
+        } else {
+          callback(null, article);
+        }
+      });
+  } else {
+    callback(null, false);
+  }
 };
+
 
 
 module.exports = User;
