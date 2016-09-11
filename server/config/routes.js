@@ -34,6 +34,7 @@ module.exports = function(app, express) {
       function(req, res) {
       // Successful authentication, redirect home.
         res.cookie('authenticate', req.session.passport);
+        // console.log('cookie being set', req.session.passport)
         res.redirect('/');
       });
 
@@ -75,6 +76,13 @@ module.exports = function(app, express) {
         } else {
           res.send({article: success});
         }
+      });
+    });
+
+  app.route('/profile')
+    .get(function(req, res) {
+      db.profile.get(req, function(error, success) {
+        res.send(success);
       });
     });
     

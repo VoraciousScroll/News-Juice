@@ -60,7 +60,6 @@ User.saveArticle = function(req, callback) {
     User.findOneAndUpdate({_facebookUniqueID: getUserObj(req)._facebookUniqueID}, {$push: {articles: req.body}}, {safe: true, upsert: true},
       function(error, article) {
         if (error) {
-          console.log('Failure to save article', error);
           callback(error);
         } else {
           callback(null, article);
@@ -71,6 +70,19 @@ User.saveArticle = function(req, callback) {
   }
 };
 
+
+User.getArticles = function(req, callback) {
+  if (getUserObj(req)) {
+    User.findOne({_facebookUniqueID: getUserObj(req)._facebookUniqueID}, function(error, user) {
+      if (error) {
+        callback(error);
+      } else {
+        // console.log(user, 'this is the user');
+        callback(null, user.articles);
+      }
+    });
+  }
+};
 
 
 module.exports = User;
