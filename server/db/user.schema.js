@@ -50,7 +50,7 @@ User.findOrCreateUser = function(profile, callback) {
   });
 };
 
-User.saveArticle = function()
+// User.saveArticle = function()
 
 
 
