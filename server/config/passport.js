@@ -19,8 +19,12 @@ passport.use(new FacebookStrategy({
       if (error) {
         return done(error);
       } else {
-        console.log(user, 'USER RECEIEVED in PASSPORT FILE');
-        done(null, user);
+        done(null, {
+          _facebookUniqueID: user._facebookUniqueID,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          picture: user.picture
+        });
       }
     });
   })

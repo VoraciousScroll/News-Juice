@@ -11,10 +11,9 @@ var fbProfile = function (fbProfile) {
 };
 
 var getUserObj = function(req) {
-  console.log(req)
-  // if (req.headers['x-xsrf-token']) {
-    // return JSON.parse(req.headers['x-xsrf-token'].slice(2)).user;
-  // } 
+  if (req.headers['x-xsrf-token']) {
+    return JSON.parse(req.headers['x-xsrf-token'].slice(2)).user;
+  } 
   return null;
 };
 
@@ -61,7 +60,6 @@ User.saveArticle = function(req, callback) {
     User.findOneAndUpdate({_facebookUniqueID: getUserObj(req)._facebookUniqueID}, {$push: {articles: req.body}}, {safe: true, upsert: true},
       function(error, article) {
         if (error) {
-          console.log('Failure to save article', error);
           callback(error);
         } else {
           callback(null, article);
@@ -79,7 +77,7 @@ User.getArticles = function(req, callback) {
       if (error) {
         callback(error);
       } else {
-        console.log(user, 'this is the user');
+        // console.log(user, 'this is the user');
         callback(null, user.articles);
       }
     });

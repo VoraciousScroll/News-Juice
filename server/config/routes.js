@@ -34,6 +34,7 @@ module.exports = function(app, express) {
       function(req, res) {
       // Successful authentication, redirect home.
         res.cookie('authenticate', req.session.passport);
+        // console.log('cookie being set', req.session.passport)
         res.redirect('/');
       });
 
@@ -77,8 +78,6 @@ module.exports = function(app, express) {
       db.saveArticle.post(req, function(error, success) {
         if (error) {
           res.sendStatus(501);
-        } else if (!success) { 
-          res.redirect(307, 'http://localhost:3000/auth/facebook');
         } else {
           res.send({article: success});
         }
