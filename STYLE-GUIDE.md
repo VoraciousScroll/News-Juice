@@ -1,4 +1,20 @@
-## Style Guide
+# Style Guide
+
+### Table of Contents
+1. [Enforcement](#Enforcement)
+1. [Indentation](#Indentation)
+1. [Variable names](#Variable-names)
+1. [Language constructs](#Language-constructs)
+1. [Semicolons](#Semicolons)
+1. [Code density](#Code-density)
+1. [Comments](#)
+1. [Padding & additional whitespace](#Padding-&-additional-whitespace)
+1. [Working with files](#Working-with-files)
+1. [Opening or closing too many blocks at once](#Opening-or-closing-too-many-blocks-at-once)
+1. [Variable declaration](#Variable-declaration)
+1. [Capital letters in variable names](#Capital-letters-in-variable-names)
+1. [Minutia](#Minutia)
+1. [HTML](#HTML)
 
 ### Enforcement
 The style guide that follows can be enforced in Sublime by installing ESLint and the Hack Reactor Labs ESLint configuration file per [these instructions](https://github.com/hackreactor-labs/eslint-config-hackreactor).
