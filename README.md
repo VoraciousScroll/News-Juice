@@ -48,7 +48,7 @@ mongod
 * Add a New App  
 * Select website option
 * Set Site URL: `http://localhost/3000`
-* Under Settings -> app domain -> localhost
+* Under Settings -> app domain -> `localhost`
 * Under Settings -> App Review -> Set App to live
 
 #### Set-Up Aylien Api key:
@@ -57,9 +57,9 @@ mongod
 
 #### Save key.js file:
 
-* Open keys.example.js file
+* Open `keys.example.js` file
 * Update Facebook and Aylien keys
-* Save keys.example.js to keys.js  
+* Save `keys.example.js` to `keys.js`  
 
 --
 ### Authors:
