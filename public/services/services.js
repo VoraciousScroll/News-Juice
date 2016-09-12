@@ -77,6 +77,12 @@ angular.module('smartNews.services', ['ngCookies'])
         return y(d.value);
       });
 
+    // filled area definition
+    var dataFill = d3.area()
+      .x(function(d) { return x(d.date); })
+      .y0(height)
+      .y1(function(d) { return y(d.value); });
+
     // set min and max values of data
     x.domain(d3.extent(data, function(d) {
       return d.date;
@@ -84,6 +90,12 @@ angular.module('smartNews.services', ['ngCookies'])
     y.domain([0, d3.max(data, function(d) {
       return d.value;
     })]);
+
+    // create filled area
+    svg.append('path')
+      .datum(data)
+      .attr('class', 'datafill')
+      .attr('d', dataFill);
 
     // add valueline path to graph
     svg.append('path')
