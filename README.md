@@ -46,7 +46,7 @@ mongod
 1. Set-up [Facebook developer profile](https://developers.facebook.com/)  
 1. Add a New App  
 1. Select website option
-1. Set Site URL: http://localhost/3000
+1. Set Site URL: `http://localhost/3000`
 1. Under Settings -> app domain -> localhost
 1. Under Settings -> App Review -> Set App to live
 
@@ -60,6 +60,17 @@ mongod
 1. Update Facebook and Aylien keys
 1. Save keys.example.js to keys.js  
 
+
+### Authors:
+
+Julie Truong ([Gamerlazer](https://github.com/Gamerlazer))
+Sean Ng
+Evan Goss
+Nathanael Ligon
+
+Hannah Henderson (hannahhenderson)
+James Ramadan (jamesramadan)
+Wayne Adams (wayneadams)
 
 <!-- ### Roadmap -->
 
