@@ -4,7 +4,11 @@ angular.module('smartNews.results', [])
 
   $scope.articleReceived = $stateParams.articleReceived;
 
-  var selectedDate = renderGraph.selectedDate;
+  $scope.selectedDate = renderGraph.selectedDate;
+
+  $scope.$watch('selectedDate', function() {
+      console.log($scope.selectedDate, 'selected Date updatede');
+  });
 
   $scope.isAuth = function() {
     $scope.user = isAuth();
@@ -31,8 +35,8 @@ angular.module('smartNews.results', [])
   $scope.getArticle = function() {
 
     var input = $stateParams.input;
-    var publishStart = selectedDate.startDate;
-    var publishEnd = selectedDate.endDate;
+    var publishStart = $scope.selectedDate.startDate;
+    var publishEnd = $scope.selectedDate.endDate;
 
     var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
 
