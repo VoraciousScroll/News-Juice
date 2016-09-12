@@ -5,7 +5,6 @@
   <title>News Juice</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
   <h1 class="landing-title"><a href="/preview">News Juice</a></h1>
@@ -16,13 +15,12 @@
   </div>
 
   <script>
-    $('body').append(
-      '<a href="http://hackreactor.com"> \
+    var bodyElem = document.getElementsByTagName("BODY")[0];
+    bodyElem.innerHTML += '<a href="http://hackreactor.com"> \
       <img style="position: fixed; top: 0; right: 0; border: 0;" \
       src="http://i.imgur.com/x86kKmF.png" \
       alt="Built at Hack Reactor"> \
       </a>'
-    );
   </script>
 </body>
 </html>
