@@ -1,3 +1,41 @@
-<div>
-  {{profile}}
+<div id="profile-page">
+
+  <div id="profile-header">
+    <img ng-src="{{user.picture}}">
+    <h2 id="profile-title">
+      {{user.firstname}}&nbsp{{user.lastname}} - User Settings
+    </h2>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>
+        Something
+      </h3>
+    </div>
+    <div class="col-sm-8">
+      <h3>
+        My Saved Searches
+      </h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Publish Date</th>
+            <th>Title</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="search in searchHistory track by $index">
+            <td>{{search.formattedPublishDate}}</td>
+            <td><a ng-href="{{search.articleLink}}">
+              {{search.title}}
+            </a></td>
+            <td>{{search.articleSource}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

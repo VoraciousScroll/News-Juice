@@ -151,9 +151,24 @@ angular.module('smartNews.services', ['ngCookies'])
     })
     .then(function(data){
       console.log('success posting', data);
-    })
-  }
+    });
+  };
 
+})
+
+.factory('getSavedSearches', function($http) {
+  return function(cb){
+    $http({
+      method: 'GET',
+      url: '/profile'
+    })
+    .then(function(data){
+      data.data.forEach(function(e){
+        e.formattedPublishDate = moment(e.publishDate).format('MMM DD YYYY, h:mma');
+      });
+      cb(data.data);
+    });
+  };
 })
 
 .factory('TopTrendsFactory', function($http, $sanitize) {
