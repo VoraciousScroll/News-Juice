@@ -98,7 +98,7 @@ angular.module('smartNews', [
           // console.log('obj:', obj);
           $state.go('main.results', {input: $scope.searchinput, articleReceived: false})
           .then(function(){
-            renderGraph(obj);
+            renderGraph.renderGraph(obj);
           });
         },
         function(error){

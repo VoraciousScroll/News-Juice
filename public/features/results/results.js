@@ -1,15 +1,17 @@
 angular.module('smartNews.results', [])
 
-.controller('ResultsCtrl', function($scope, $stateParams, $http, isAuth, saveArticle) {
+.controller('ResultsCtrl', function($scope, $stateParams, $http, isAuth, saveArticle, renderGraph) {
 
   $scope.articleReceived = $stateParams.articleReceived;
 
-  $scope.isAuth = function(){
+  var selectedDate = renderGraph.selectedDate;
+
+  $scope.isAuth = function() {
     $scope.user = isAuth();
     return !!isAuth();
   };
 
-  $scope.clickSave = function(el){
+  $scope.clickSave = function(el) {
     var article = {
       title: el.title,
       author: el.author.name,
@@ -25,8 +27,8 @@ angular.module('smartNews.results', [])
   $scope.getArticle = function() {
 
     var input = $stateParams.input;
-    var publishStart = 'NOW-2DAYS';
-    var publishEnd = 'NOW';
+    var publishStart = selectedDate.startDate;
+    var publishEnd = selectedDate.endDate;
 
     var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
 

@@ -11,15 +11,19 @@
 angular.module('smartNews.services', ['ngCookies'])
 
 .factory('renderGraph', function() {
+  var selectedDate = {
+    startDate: 'NOW-2DAYS', 
+    endDate: 'NOW'
+  };
 
-  return function(dataObj) {
+  var renderGraph = function(dataObj) {
     data = dataObj.data.timeSeries;
 
     //clear out contents of graph prior to rendering, to prevent stacking graphs
     // using 'window' is necessary here due to lexical scope.
     if (window.graph.innerHTML !== undefined) {
       window.graph.innerHTML = '';
-    };
+    }
 
     // set graph dimensions and margins
     var margin = { top: 50, right: 50, bottom: 50, left: 50 };
@@ -127,27 +131,12 @@ angular.module('smartNews.services', ['ngCookies'])
           .style('left', (d3.event.pageX) + 'px')
           .style('top', (d3.event.pageY + 4) + 'px');
 
-        // var articleTooltip = function() {
-        //   // var startDate = d.publishedAt.split('T')[0] + 'T00:00:00.000Z';
-        //   // var endDate = startDate + '%2B24HOURS';
-        //   var startDate = '2016-06-27T00:00:00.000Z';
-        //   var endDate = '2016-06-28T00:00:00.000Z'
-        //   var url = '/seearticle?input=' + 'obama' + '&start=' + startDate + '&end=' + endDate;
-        //   console.log('articleTooltip function called, d=', d);
-        //   // console.log('start:', startDate, 'end:', endDate);
-        //   console.log(url);
-        //   return $http({
-        //     method: 'GET',
-        //     url: url
-        //   })
-        //   .then(function(response) {
-        //     console.log(response);
-        //     // response.data.stories.forEach(function(article) {
-        //     //   // set divArticles html
-        //     //   console.log(article);
-        //     // })
-        //   });
-        // }
+        var startDate = d.publishedAt.split('T')[0];
+        selectedDate.startDate = new Date(startDate).toISOString();
+        var endDate = new Date(startDate);
+        endDate = endDate.setDate(endDate.getDate() + 1);
+        selectedDate.endDate = new Date(endDate).toISOString();
+        
       });
 
     // add x-axis labels
@@ -163,10 +152,14 @@ angular.module('smartNews.services', ['ngCookies'])
       .call(d3.axisLeft(y));
   };
 
+  return {
+    renderGraph: renderGraph, 
+    selectedDate: selectedDate
+  };
 })
 
-.factory('isAuth', function($cookies){
-  return function(){
+.factory('isAuth', function($cookies) {
+  return function() {
     var auth = $cookies.get('authenticate');
     if (auth && auth !== 'undefined') {
       var parsedAuth = JSON.parse(auth.slice(2)).user;
