@@ -13,14 +13,14 @@ HR47 Greenfield Project
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Development](#development)
+1. [Getting Started](#getting-started)
     1. [Installing Dependencies](#installing-dependencies)
     1. [API Key Set-Up](#api-key-set-up)
 1. [Team](#team)
 1. [Authors](#authors)
 
 --
-## Development
+## Getting Started
 
 ### Installing Dependencies
 
