@@ -102,6 +102,8 @@ angular.module('smartNews.services', ['ngCookies'])
       .attr('y', 0)
       .attr('class', 'tooltip-target')
       .on('mouseover', function(d) {
+        d3.select(this)
+          .classed('tooltip-target-on', true);
         div.transition()
           .duration(100)
           .style('opacity', 0.75);
@@ -112,6 +114,8 @@ angular.module('smartNews.services', ['ngCookies'])
           .style('top', (d3.event.pageY - 28) + 'px');
       })
       .on('mouseout', function(d) {
+        d3.select(this)
+          .classed('tooltip-target-on', false);
         div.transition()
           .duration(250)
           .style('opacity', 0);
