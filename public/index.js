@@ -11,7 +11,7 @@ angular.module('smartNews', [
   'ui.bootstrap'
 ])
 
-.config(function($urlRouterProvider, $stateProvider){
+.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
 
   $stateProvider
     .state('main', {
@@ -41,7 +41,21 @@ angular.module('smartNews', [
     });
 
   $urlRouterProvider.otherwise('/main/home');
-
+  $httpProvider.interceptors.push('requestCookie');
+})
+.factory('requestCookie', function ($document, $cookies) {
+  // console.log('this factory');
+  return {
+    request: function (request) {
+      // var parsedCookie = $cookies.get('authenticate');
+      // console.log(parsedCookie, 'This is my document');
+      // // config.headers['x-session-token'] = SessionService.token
+      // // request.session.passport = parsedCookie;
+      request.xsrfCookieName = 'authenticate';
+      // console.log(request, 'My request object');
+      return request;
+    }
+  };
 })
 
 .directive('navbar', function(){
@@ -72,6 +86,7 @@ angular.module('smartNews', [
     });
   };
 
+  
   $scope.renderView = function() {
     var url = '/results/' + $scope.searchinput;
     if ($scope.searchinput) {
@@ -84,11 +99,15 @@ angular.module('smartNews', [
           // console.log('obj:', obj);
           $state.go('main.results', {input: $scope.searchinput, articleReceived: false})
           .then(function(){
-            renderGraph(obj);
+            
+            window.objWin = obj;
+            window.renderGraphWin = renderGraph.renderGraph;
+            renderGraph.renderGraph(obj);
+
           });
         },
         function(error){
-          console.log('there was an error!!', error);
+          console.log('Error', error);
         }
       );
     } else {

@@ -1,4 +1,5 @@
-@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|Yatra+One';
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|EB+Garamond';
+
 h1 {
   font-family: 'Playfair Display SC', serif;
   text-align: center;
@@ -16,8 +17,27 @@ h1 > a:hover {
 }
 
 h2 {
-  text-align: center;
-  display: inline
+  font-family: 'EB Garamond', serif;
+  font-size: 30px;
+}
+
+h2 > a {
+  text-decoration: none;
+  color: black;
+}
+
+h2 > a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+h3 {
+  font-size: 26px;
+  font-family: 'EB Garamond', serif;
+}
+
+.link {
+  cursor: pointer;
 }
 
 .primaryImg {
@@ -26,29 +46,113 @@ h2 {
   float: left;
 }
 
-td.articleImg {
-  text-align: right;
-} 
-
-.trendArticle {
-  border-width: 1px;
-  border-color: lightgrey;
-  border-radius: 5px;
-  border-style: solid;
-}
-
-.trendArticle img {
-  align: right;
-  max-width: 200px;
-  border: 10px 10px;
-}
-
 .upperdiv.container {
   margin: 30px auto;
 }
 
+#home-left-div {
+  padding-left: 0px;
+}
 
-/*Search Bar*/
+#home-right-div {
+  padding-right: 10px;
+}
+
+/* Trend Chart */
+
+#top-trends-div {
+  font-family: 'EB Garamond', serif;
+}
+
+#top-trends-div > h3 {
+  padding-left: 5px;
+  margin-bottom: 22px;
+}
+
+#trend-list {
+  padding-left: 10px;
+}
+
+li.trend-listing {
+  list-style: none;
+  margin: 5px 0;
+}
+
+.trend-rank {
+  display: inline-block;
+  font-size: 24px;
+  min-width: 20px;
+}
+
+.trend-image {
+  max-width: 200px;
+  border-radius: 6px;
+  margin: 5px;
+  margin-right: 15px;
+}
+
+.trend-topic {
+  font-size: 20px;
+}
+
+.trend-traffic {
+  font-size: 16px;
+}
+
+/* Article */
+
+.save-button {
+  float: right;
+}
+
+.article-title {
+  padding-right: 10px;
+}
+
+.article-image {
+  padding-left: 0px;
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.article-subheading {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  padding: 5px 10px 7px 0px;
+}
+
+.article-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.article-author {
+  text-align: right;
+}
+
+/* Article Preview */
+
+.article-body-preview {
+  height: 250px;
+}
+
+.article-preview-left {
+  position: relative;
+  padding: 10px 0px;
+}
+
+.article-date {
+  float: right;
+}
+
+.article-preview-right {
+  position: relative;
+  height: 100%;
+  overflow: scroll;
+}
+
+/* Search Bar */
 
 .searchbar.form-control {
   border-radius: 0
@@ -68,6 +172,8 @@ td.articleImg {
   height: 64px;
   max-width: 64px;
 }
+
+article
 /* Results Graph */
 
 #graph {
@@ -78,6 +184,12 @@ td.articleImg {
   fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;
+}
+
+.datafill {
+    fill: lightsteelblue;
+    fill-opacity: 0.5;
+    stroke-width: 0;
 }
 
 .axis path,
@@ -101,6 +213,20 @@ div.tooltip {
   pointer-events: none;
 }
 
+div.tooltip-articles {
+  position: absolute;
+  text-align: left;
+  width: 200px;
+  height: 100px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightskyblue;
+  border: 1px;
+  border-color: black;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
 .tooltip-date {
   /* nothing needed */
 }
@@ -114,18 +240,86 @@ div.tooltip {
   fill-opacity: 0.1;
 }
 
-.svg-container {
+.tooltip-target-on {
+  fill: black;
+  fill-opacity: 0.25;
+}
+
+/*.svg-container {
   display: inline-block;
   position: relative;
   width: 100%;
   padding-bottom: 100%;
   vertical-align: top;
   overflow: hidden;
-}
+}*/
 
 .svg-content-responsive {
   display: inline-block;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.tick {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+#profile-page {
+  margin-top: 30px;
+}
+
+#profile-header {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+#profile-header > img {
+  width: 95px;
+  margin: 20px 20px 20px 0;
+  border-radius: 8px;
+}
+
+#profile-title {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-bottom: 20px;
+}
+
+#search-history {
+  word-wrap: break-word;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.search-history-saveddate {
+  width: 12%;
+}
+
+.search-history-title {
+  width: 46%;
+}
+
+.search-history-title > a {
+  padding-right: 5px;
+}
+
+.search-history-source {
+  width: 20%;
+}
+
+.search-history-source > div {
+  padding-right: 20px;
+}
+
+.search-history-date {
+  width: 12%;
+}
+
+.search-history-remove {
+  width: 10%;
 }

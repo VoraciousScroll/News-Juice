@@ -1,20 +1,10 @@
 angular.module('smartNews')
 
-.controller('NavCtrl', function($scope, $http, $cookies, $location) {
+.controller('NavCtrl', function($scope, $http, $cookies, $location, isAuth) {
 
   $scope.isAuth = function(){
-    var auth = $cookies.get('authenticate');
-    if (auth && auth !== 'undefined') {
-      var parsedAuth = JSON.parse(auth.slice(2)).user;
-      $scope.user = {
-        firstname: parsedAuth.firstname,
-        lastname: parsedAuth.lastname,
-        picture: parsedAuth.picture
-      };
-      return true;
-    }
-    $scope.user = {};
-    return false;
+    $scope.user = isAuth();
+    return !!isAuth();
   };
 
   $scope.goToProfile = function(){

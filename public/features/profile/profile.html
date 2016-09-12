@@ -1,3 +1,39 @@
-<div>
-  {{profile}}
+<div id="profile-page">
+
+  <div id="profile-header">
+    <img ng-src="{{user.picture}}">
+    <h2 id="profile-title">
+      {{user.firstname}}&nbsp{{user.lastname}} - My Articles
+    </h2>
+  </div>
+  <table id="search-history">
+    <thead>
+      <tr>
+        <th class="search-history-date">Saved On</th>
+        <th class="search-history-title">Title</th>
+        <th class="search-history-saveddate">Publish Date</th>
+        <th class="search-history-source">Source</th>
+        <th class="search-history-remove"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="search in searchHistory track by $index">
+        <td class="search-history-saveddate">{{search.formattedSavedDate}}</td>
+        <td class="search-history-title"><a ng-href="{{search.articleLink}}">
+          {{search.title}}
+        </a></td>
+        <td class="search-history-date">{{search.formattedPublishDate}}</td>
+        <td class="search-history-source">
+          <div>
+            {{search.articleSource}}
+          </div>
+        </td>
+        <td class="search-history-remove">
+          <button class="btn btn-danger btn-sm" ng-click="unsave(search)">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
