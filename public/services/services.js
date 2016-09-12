@@ -215,15 +215,16 @@ angular.module('smartNews.services', ['ngCookies'])
 .factory('getSavedSearches', function($http) {
   return function(cb) {
     $http({
-        method: 'GET',
-        url: '/profile'
-      })
-      .then(function(data) {
-        data.data.forEach(function(e) {
-          e.formattedPublishDate = moment(e.publishDate).format('MMM DD YYYY, h:mma');
-        });
-        cb(data.data);
+      method: 'GET',
+      url: '/profile'
+    })
+    .then(function(data){
+      data.data.forEach(function(e){
+        e.formattedPublishDate = moment(e.publishDate).format('MMM DD YYYY');
+        e.formattedSavedDate = moment(e.savedDate).format('MMM DD YYYY');
       });
+      cb(data.data);
+    });
   };
 })
 
