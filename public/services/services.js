@@ -10,7 +10,7 @@
 
 angular.module('smartNews.services', ['ngCookies'])
 
-.factory('renderGraph', function() {
+.factory('renderGraph', function($rootScope) {
   var selectedDate = {
     startDate: 'NOW-2DAYS',
     endDate: 'NOW'
@@ -153,7 +153,7 @@ angular.module('smartNews.services', ['ngCookies'])
         var endDate = new Date(startDate);
         endDate = endDate.setDate(endDate.getDate() + 1);
         selectedDate.endDate = new Date(endDate).toISOString();
-
+        $rootScope.$broadcast('user:clickDate', selectedDate);
       });
 
     // add x-axis labels

@@ -4,7 +4,7 @@ angular.module('smartNews.results', [])
 
   $scope.articleReceived = $stateParams.articleReceived;
 
-  var selectedDate = renderGraph.selectedDate;
+  $scope.selectedDate = renderGraph.selectedDate;
 
   $scope.isAuth = function() {
     $scope.user = isAuth();
@@ -31,8 +31,8 @@ angular.module('smartNews.results', [])
   $scope.getArticle = function() {
 
     var input = $stateParams.input;
-    var publishStart = selectedDate.startDate;
-    var publishEnd = selectedDate.endDate;
+    var publishStart = $scope.selectedDate.startDate;
+    var publishEnd = $scope.selectedDate.endDate;
 
     var url = '/seearticle?input=' + input + '&start=' + publishStart + '&end=' + publishEnd;
 
@@ -49,6 +49,13 @@ angular.module('smartNews.results', [])
       }
     );
   };
+  // Render article
+  $scope.getArticle();
+  // Render new articles on graph click
+  $scope.$on('user:clickDate', function(event, data) {
+    $scope.getArticle();
+  });
+
 })
 .directive('resultarticle', function() {
   return {
