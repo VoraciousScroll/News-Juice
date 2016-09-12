@@ -43,14 +43,14 @@ mongod
 ### API Key Set-Up
 
 #### Set-Up Facebook Developer Key:
-
+*
 Set-up [Facebook developer profile](https://developers.facebook.com/)  
-**Add a New App  
-**Select website option   
-**Set Site URL: http://localhost/3000  
-...Under Settings -> app domain -> localhost 
-...Under Settings -> App Review -> Set App to live
-
+Add a New App  
+Select website option   
+Set Site URL: http://localhost/3000  
+Under Settings -> app domain -> localhost 
+Under Settings -> App Review -> Set App to live
+*
 #### Set-Up Aylien Api key:
 
 Sign-up for [Aylien account](https://newsapi.aylien.com/signup) and obtain keys
