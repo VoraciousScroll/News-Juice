@@ -16,7 +16,8 @@ HR47 Greenfield Project
     1. [Installing Dependencies](#installing-dependencies)
     1. [API Key Set-Up](#api-key-set-up)
 1. [Team](#team)
-1. [Contributing](#contributing)
+1. [Authors](#authors)
+
 
 ## Usage
 
@@ -63,14 +64,10 @@ mongod
 
 ### Authors:
 
-Julie Truong ([Gamerlazer](https://github.com/Gamerlazer))
-Sean Ng
-Evan Goss
-Nathanael Ligon
-
-Hannah Henderson (hannahhenderson)
-James Ramadan (jamesramadan)
-Wayne Adams (wayneadams)
+Julie Truong ([Gamerlazer](https://github.com/Gamerlazer))  
+Sean Ng ([seanng](https://github.com/seanng))  
+Evan Goss ([EvanGoss](https://github.com/EvanGoss))  
+Nathanael Ligon ([nligon](https://github.com/nligon))  
 
 <!-- ### Roadmap -->
 
