@@ -4,14 +4,15 @@ var passport = require('./passport.js');
 var aylien = require('../news-apis/aylien-helpers.js');
 var googleTrends = require('../news-apis/google-trends-helpers.js');
 var request = require('request');
+var db = require('./db.controller.js');
 
 module.exports = function(app, express) {
 
 /**************** AUTOCOMPLETE *****************/
   app.route('/input/:input')
-    .get(function(req,res){
+    .get(function(req, res) {
       var url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=pageprops%7Cpageimages%7Cpageterms&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=80&pilimit=5&wbptterms=description&gpssearch=' + req.params.input + '&gpsnamespace=0&gpslimit=5';
-      request(url, function(err, resp, body){
+      request(url, function(err, resp, body) {
         if (err) {
           console.log('there was an error requesting via express', err);
         } else {
@@ -33,6 +34,7 @@ module.exports = function(app, express) {
       function(req, res) {
       // Successful authentication, redirect home.
         res.cookie('authenticate', req.session.passport);
+        // console.log('cookie being set', req.session.passport)
         res.redirect('/');
       });
 
@@ -46,8 +48,6 @@ module.exports = function(app, express) {
   // http://localhost/3000/see-article?input=obama&start=[startdate]&end=[enddate]
   app.route('/seearticle')
     .get(function(req, res) {
-      console.log(req.url, 'URL STRING');
-      console.log(req.query, 'QUERY STRING');
       aylien.articleImport(req.query.input, res, req.query.start, req.query.end, req.query.limit);
     });
 
@@ -59,16 +59,33 @@ module.exports = function(app, express) {
 
   app.route('/api/news/topTrends')
     .get(function(req, res) {
-      console.log('Received get on /api/news/topTrends from app.route on routes.js');
       googleTrends.hotTrends(res, 10, 'US');
     });
 
   app.route('/api/news/topTrendsDetail')
     .get(function(req, res) {
-      console.log('Received get on /api/news/topTrendsDetail from app.route on routes.js');
       googleTrends.hotTrendsDetail(res, 10, 'US');
     });
 
+  /************************ SAVE ARTICLE **********************************/
+  app.route('/saveArticle')
+    .post(function(req, res) {
+      db.saveArticle.post(req, function(error, success) {
+        if (error) {
+          res.sendStatus(501);
+        } else {
+          res.send({article: success});
+        }
+      });
+    });
+
+  app.route('/profile')
+    .get(function(req, res) {
+      db.profile.get(req, function(error, success) {
+        res.send(success);
+      });
+    });
+    
 
   // Error handling: send log the error and send status 500. This handles one error.
   app.use(function(err, req, res, next) {

@@ -8,18 +8,20 @@
 
 // 2: Set up graph to start from the middle of y-axes rather than bottom
 
-angular.module('smartNews.services', [])
+angular.module('smartNews.services', ['ngCookies'])
 
 .factory('renderGraph', function() {
-  
+
+
   var renderGraph = function(dataObj) {
+
     data = dataObj.data.timeSeries;
 
     //clear out contents of graph prior to rendering, to prevent stacking graphs
     // using 'window' is necessary here due to lexical scope.
     if (window.graph.innerHTML !== undefined) {
       window.graph.innerHTML = '';
-    };
+    }
 
     // set graph dimensions and margins
     var margin = { top: 0, right: 50, bottom: 50, left: 50 };
@@ -27,7 +29,7 @@ angular.module('smartNews.services', [])
     // fixed size graph. These values are shorter than true innerWidth / innerHeight:
     var graph = document.getElementById('graph');
     var width = window.innerWidth - margin.left - margin.right;
-    var height = window.innerHeight*.5 - margin.top - margin.bottom;
+    var height = window.innerHeight * 0.5 - margin.top - margin.bottom;
 
     // parse UTC date/time
     var parseTime = d3.timeParse('%Y-%m-%dT%H:%M:%S.%LZ');
@@ -51,10 +53,15 @@ angular.module('smartNews.services', [])
       .classed("svg-content-responsive", true);
 
 
-
     // div element for tooltip
     var div = d3.select('#graph').append('div')
       .attr('class', 'tooltip')
+      .style('opacity', 0);
+
+    // div element for articles
+    var divArticles = d3.select('#graph').append('div')
+      // .attr('class', 'tooltip')
+      .attr('class', 'tooltip-articles')
       .style('opacity', 0);
 
     // format data
@@ -110,6 +117,38 @@ angular.module('smartNews.services', [])
         div.transition()
           .duration(250)
           .style('opacity', 0);
+      })
+      .on('click', function(d) {
+        divArticles.transition()
+          .duration(100)
+          .style('opacity', 0.75);
+        divArticles.html(
+            '<span class="tooltip-date">Stories published on ' + moment(d.date).format("MM/DD/YYYY") + ':</span><br/>' + '<div id="tooltip-article-link">' + '</div>'
+          )
+          .style('left', (d3.event.pageX) + 'px')
+          .style('top', (d3.event.pageY + 4) + 'px');
+
+        // var articleTooltip = function() {
+        //   // var startDate = d.publishedAt.split('T')[0] + 'T00:00:00.000Z';
+        //   // var endDate = startDate + '%2B24HOURS';
+        //   var startDate = '2016-06-27T00:00:00.000Z';
+        //   var endDate = '2016-06-28T00:00:00.000Z'
+        //   var url = '/seearticle?input=' + 'obama' + '&start=' + startDate + '&end=' + endDate;
+        //   console.log('articleTooltip function called, d=', d);
+        //   // console.log('start:', startDate, 'end:', endDate);
+        //   console.log(url);
+        //   return $http({
+        //     method: 'GET',
+        //     url: url
+        //   })
+        //   .then(function(response) {
+        //     console.log(response);
+        //     // response.data.stories.forEach(function(article) {
+        //     //   // set divArticles html
+        //     //   console.log(article);
+        //     // })
+        //   });
+        // }
       });
 
     // add x-axis labels
@@ -124,10 +163,53 @@ angular.module('smartNews.services', [])
       .attr('transform', 'translate(0,' + '0' + ')')
       .call(d3.axisLeft(y));
   };
-  
+
   // window.renderGraphWin = renderGraph;
 
-  return renderGraph;
+})
+
+.factory('isAuth', function($cookies) {
+  return function() {
+    var auth = $cookies.get('authenticate');
+    if (auth && auth !== 'undefined') {
+      var parsedAuth = JSON.parse(auth.slice(2)).user;
+      return {
+        firstname: parsedAuth.firstname,
+        lastname: parsedAuth.lastname,
+        picture: parsedAuth.picture,
+      };
+    }
+    return null;
+  };
+})
+
+.factory('saveArticle', function($http) {
+  return function(article) {
+    $http({
+        method: 'POST',
+        data: article,
+        url: '/saveArticle'
+      })
+      .then(function(data) {
+        console.log('success posting', data);
+      });
+  };
+
+})
+
+.factory('getSavedSearches', function($http) {
+  return function(cb) {
+    $http({
+        method: 'GET',
+        url: '/profile'
+      })
+      .then(function(data) {
+        data.data.forEach(function(e) {
+          e.formattedPublishDate = moment(e.publishDate).format('MMM DD YYYY, h:mma');
+        });
+        cb(data.data);
+      });
+  };
 })
 
 .factory('TopTrendsFactory', function($http, $sanitize) {

@@ -4,8 +4,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 
 /****** REQUIRE DATABASE ******/
-var db = require('./db');
-
+var db = require('../db/config.js');
+var User = require('../db/user.schema.js');
 /****************** PASSPORT CONFIG ***************/
 
 passport.use(new FacebookStrategy({
@@ -15,12 +15,16 @@ passport.use(new FacebookStrategy({
   profileFields: ['id', 'name', 'picture.type(large)', 'email', 'gender']
 },
   function(accessToken, refreshToken, profile, done) {
-    db.User.findOrCreateUser(profile, function(error, user) {
+    User.findOrCreateUser(profile, function(error, user) {
       if (error) {
         return done(error);
       } else {
-        console.log(user, 'USER RECEIEVED in PASSPORT FILE');
-        done(null, user);
+        done(null, {
+          _facebookUniqueID: user._facebookUniqueID,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          picture: user.picture
+        });
       }
     });
   })
@@ -34,20 +38,4 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-
 module.exports = passport;
-
-
-/********************** NOTES **************************/
-
-/*
-app.post('/login',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login',
-                                   failureFlash: 'Invalid username or password.' }));
-- Login in valid to / not valid to login
-
-
-{ failureFlash: 'Invalid username or password.' });
-
-*/
