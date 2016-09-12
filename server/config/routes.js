@@ -68,7 +68,7 @@ module.exports = function(app, express) {
     });
 
   /************************ SAVE ARTICLE **********************************/
-  app.route('/saveArticle')
+  app.route('/article')
     .post(function(req, res) {
       db.saveArticle.post(req, function(error, success) {
         if (error) {
@@ -79,13 +79,20 @@ module.exports = function(app, express) {
       });
     });
 
+  app.route('/unsaveArticle/:id')
+    .delete(function(req, res) {
+      db.unsaveArticle.delete(req, function(err, success){
+        res.send(success);
+      });
+    });
+
   app.route('/profile')
     .get(function(req, res) {
       db.profile.get(req, function(error, success) {
         res.send(success);
       });
     });
-    
+
 
   // Error handling: send log the error and send status 500. This handles one error.
   app.use(function(err, req, res, next) {
