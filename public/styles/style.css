@@ -182,7 +182,7 @@ li.trend-listing {
 .line {
   fill: none;
   stroke: steelblue;
-  stroke-width: 1.5px;
+  stroke-width: 2px;
 }
 
 .datafill {
@@ -195,7 +195,7 @@ li.trend-listing {
 .axis line {
   fill: none;
   stroke: #AAA;
-  stroke-width: 1;
+  stroke-width: 2px;
   shape-rendering: crispEdges;
 }
 
@@ -236,7 +236,7 @@ div.tooltip-articles {
 
 .tooltip-target {
   fill: black;
-  fill-opacity: 0.1;
+  fill-opacity: 0.0;
 }
 
 .tooltip-target-on {
@@ -262,8 +262,9 @@ div.tooltip-articles {
 
 .tick {
   display: inline-block;
-  font-weight: bold;
-  font-size: 2em;
+  /*font-weight: bold;*/
+  font-size: 1.5em;
+  stroke-width: 2px;
 }
 
 #profile-page {
