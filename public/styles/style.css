@@ -1,18 +1,34 @@
-@import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|EB+Garamond';
-
-.landing-title {
-  margin-top: 71px;
-}
+@import 'https://fonts.googleapis.com/css?family=Karla|Kaushan+Script|Playfair+Display+SC|EB+Garamond';
 
 .landing-page {
   margin-top: 30px;
   text-align: center;
 }
 
+.landing-page > a > img {
+  width: 65%;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+
+.landing-page > p {
+  margin-top: 35px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Karla', sans-serif;
+}
+
 h1 {
   font-family: 'Playfair Display SC', serif;
   text-align: center;
   margin-top: 0px;
+}
+
+h1.landing-page-title {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Kaushan Script', cursive;
 }
 
 h1 > a {
