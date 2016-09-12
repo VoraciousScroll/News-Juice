@@ -64,10 +64,10 @@ mongod
 
 ### Authors:
 
-Julie Truong ([Gamerlazer](https://github.com/Gamerlazer))  
-Sean Ng ([seanng](https://github.com/seanng))  
-Evan Goss ([EvanGoss](https://github.com/EvanGoss))  
-Nathanael Ligon ([nligon](https://github.com/nligon))  
+*Julie Truong ([Gamerlazer](https://github.com/Gamerlazer))  
+*Sean Ng ([seanng](https://github.com/seanng))  
+*Evan Goss ([EvanGoss](https://github.com/EvanGoss))  
+*Nathanael Ligon ([nligon](https://github.com/nligon))  
 
 <!-- ### Roadmap -->
 
