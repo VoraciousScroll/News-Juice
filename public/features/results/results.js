@@ -6,10 +6,6 @@ angular.module('smartNews.results', [])
 
   $scope.selectedDate = renderGraph.selectedDate;
 
-  $scope.$watch('selectedDate', function() {
-      console.log($scope.selectedDate, 'selected Date updatede');
-  });
-
   $scope.isAuth = function() {
     $scope.user = isAuth();
     return !!isAuth();
@@ -53,6 +49,13 @@ angular.module('smartNews.results', [])
       }
     );
   };
+  // Render article
+  $scope.getArticle();
+  // Render new articles on graph click
+  $scope.$on('user:clickDate', function(event, data) {
+    $scope.getArticle();
+  });
+
 })
 .directive('resultarticle', function() {
   return {
