@@ -48,7 +48,8 @@ angular.module('smartNews.services', ['ngCookies'])
       .append('svg')
       // responsive SVG needs these two attr's and an absence of height and width attr's
       // .attr('preserveAspectRatio', 'xMinYMin meet') // preserves aspect ratio by 'fitting' the viewbox to the viewport, rather than filling
-      .attr('viewBox', '0 0 ' + (window.innerWidth) + ' ' + (window.innerHeight))
+      // .attr('viewBox', '0 0 ' + (window.innerWidth) + ' ' + (window.innerHeight))
+      .attr('viewBox', '0 0 ' + (window.innerWidth) + ' ' + 400 )
       // append group element
       .append('g')
       // center group element on page by subtracting viewbox length from viewport length, halving, and spacing that many pixels
