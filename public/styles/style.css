@@ -185,6 +185,12 @@ li.trend-listing {
   stroke-width: 1.5px;
 }
 
+.datafill {
+    fill: lightsteelblue;
+    fill-opacity: 0.5;
+    stroke-width: 0;
+}
+
 .axis path,
 .axis line {
   fill: none;
@@ -206,6 +212,20 @@ div.tooltip {
   pointer-events: none;
 }
 
+div.tooltip-articles {
+  position: absolute;
+  text-align: left;
+  width: 200px;
+  height: 100px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightskyblue;
+  border: 1px;
+  border-color: black;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
 .tooltip-date {
   /* nothing needed */
 }
@@ -217,6 +237,11 @@ div.tooltip {
 .tooltip-target {
   fill: black;
   fill-opacity: 0.1;
+}
+
+.tooltip-target-on {
+  fill: black;
+  fill-opacity: 0.25;
 }
 
 /*.svg-container {
