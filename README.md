@@ -41,6 +41,28 @@ mongod
 
 ### API keys
 
+Set-Up Facebook Developer Key
+```sh
+Set-up Facebook developer [profile](https://developers.facebook.com/)
+Update Facebook and Aylien keys 
+Save keys.example.js to keys.js
+```
+
+Set-Up Aylien Api key
+```sh
+Open keys.example.js file 
+Update Facebook and Aylien keys 
+Save keys.example.js to keys.js
+```
+
+Save key.js file
+```sh
+Open keys.example.js file 
+Update Facebook and Aylien keys 
+Save keys.example.js to keys.js
+```
+
+
 <!-- ### Roadmap -->
 
 <!-- View the project roadmap [here](LINK_TO_PROJECT_ISSUES) -->
