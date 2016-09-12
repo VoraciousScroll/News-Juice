@@ -86,7 +86,6 @@ angular.module('smartNews', [
     });
   };
 
-  
   $scope.renderView = function() {
     var url = '/results/' + $scope.searchinput;
     if ($scope.searchinput) {
