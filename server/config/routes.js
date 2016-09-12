@@ -27,7 +27,7 @@ module.exports = function(app, express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.get('/preview', function(req, res){
+  app.get('/enter', function(req, res){
     console.log(__dirname);
     res.sendFile(path.join(__dirname + '/../../public/layout.html'));
   });
