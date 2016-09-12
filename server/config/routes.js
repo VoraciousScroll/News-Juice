@@ -5,6 +5,7 @@ var aylien = require('../news-apis/aylien-helpers.js');
 var googleTrends = require('../news-apis/google-trends-helpers.js');
 var request = require('request');
 var db = require('./db.controller.js');
+var path = require('path');
 
 module.exports = function(app, express) {
 
@@ -25,6 +26,11 @@ module.exports = function(app, express) {
 /**************** USER AUTH FACEBOOK *****************/
   app.use(passport.initialize());
   app.use(passport.session());
+
+  app.get('/preview', function(req, res){
+    console.log(__dirname);
+    res.sendFile(path.join(__dirname + '/../../public/layout.html'));
+  });
 
   app.get('/auth/facebook',
     passport.authenticate('facebook'));

@@ -1,5 +1,14 @@
 @import 'https://fonts.googleapis.com/css?family=Playfair+Display+SC|EB+Garamond';
 
+.landing-title {
+  margin-top: 71px;
+}
+
+.landing-page {
+  margin-top: 30px;
+  text-align: center;
+}
+
 h1 {
   font-family: 'Playfair Display SC', serif;
   text-align: center;
