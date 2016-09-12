@@ -2,11 +2,16 @@
 
   <div id="profile-header">
     <img ng-src="{{user.picture}}">
-    <h2 id="profile-title">
-      {{user.firstname}}&nbsp{{user.lastname}} - My Articles
-    </h2>
+    <div id="profile-title">
+      <h2 class="top">
+        {{user.firstname}}&nbsp{{user.lastname}}
+      </h2>
+      <h2 class="bot">
+        - My Articles
+      </h2>
+    </div>
   </div>
-  <table id="search-history">
+  <table class="table table-striped" id="search-history">
     <thead>
       <tr>
         <th class="search-history-date">Saved On</th>

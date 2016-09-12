@@ -41,9 +41,19 @@ h1 > a:hover {
   color: black;
 }
 
+
+
 h2 {
   font-family: 'EB Garamond', serif;
   font-size: 30px;
+}
+
+h2.top {
+  font-size: 36px;
+}
+
+h2.bot {
+  font-size: 24px;
 }
 
 h2 > a {
@@ -305,6 +315,7 @@ div.tooltip-articles {
   margin-top: 30px;
 }
 
+
 #profile-header {
   border-top: 1px solid silver;
   border-bottom: 1px solid silver;
@@ -324,10 +335,10 @@ div.tooltip-articles {
 
 #search-history {
   word-wrap: break-word;
-  border-collapse: separate;
   border-spacing: 0 1em;
   width: 100%;
   padding-top: 15px;
+  margin-top: 10px;
 }
 
 .search-history-saveddate {
