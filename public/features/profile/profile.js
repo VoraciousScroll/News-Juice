@@ -8,9 +8,8 @@ angular.module('smartNews.profile', ['smartNews.services'])
 
   var getHistory = function(){
     getSavedSearches(function(resp){
-      console.log(resp);
       resp.sort(function(a, b){
-        return a.savedDate - b.savedDate;
+        return new Date(b.savedDate) - new Date(a.savedDate);
       });
       $scope.searchHistory = resp;
     });
