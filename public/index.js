@@ -55,7 +55,7 @@ angular.module('smartNews', [
       // console.log(request, 'My request object');
       return request;
     }
-  }
+  };
 })
 
 .directive('navbar', function(){
@@ -86,6 +86,7 @@ angular.module('smartNews', [
     });
   };
 
+  
   $scope.renderView = function() {
     var url = '/results/' + $scope.searchinput;
     if ($scope.searchinput) {
@@ -98,16 +99,18 @@ angular.module('smartNews', [
           // console.log('obj:', obj);
           $state.go('main.results', {input: $scope.searchinput, articleReceived: false})
           .then(function(){
+            window.objWin = obj;
             renderGraph(obj);
           });
         },
         function(error){
-          console.log('there was an error!!', error);
+          console.log('Error', error);
         }
       );
     } else {
       $state.go('main.home');
     }
   };
+  window.renderGraphWin = renderGraph;
 
 });
