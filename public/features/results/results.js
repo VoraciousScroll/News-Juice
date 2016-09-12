@@ -11,11 +11,15 @@ angular.module('smartNews.results', [])
     return !!isAuth();
   };
 
-  $scope.clickSave = function(el) {
+
+  $scope.clickSave = function(el){
+    var now = new Date();
+
     var article = {
       title: el.title,
       author: el.author.name,
       publishDate: el.publishedAt,
+      savedDate: now,
       articleLink: el.links.permalink,
       articleSource: el.source.name,
       img: el.media[0].url,

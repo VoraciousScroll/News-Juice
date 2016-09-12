@@ -13,7 +13,7 @@ var fbProfile = function (fbProfile) {
 var getUserObj = function(req) {
   if (req.headers['x-xsrf-token']) {
     return JSON.parse(req.headers['x-xsrf-token'].slice(2)).user;
-  } 
+  }
   return null;
 };
 
@@ -27,6 +27,7 @@ var userSchema = new mongoose.Schema({
     title: String,
     author: String,
     publishDate: Date,
+    savedDate: Date,
     articleLink: String,
     articleSource: String,
     img: String,
@@ -51,7 +52,7 @@ User.findOrCreateUser = function(profile, callback) {
       });
     } else {
       callback(null, user);
-    } 
+    }
   });
 };
 

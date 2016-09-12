@@ -185,6 +185,12 @@ li.trend-listing {
   stroke-width: 1.5px;
 }
 
+.datafill {
+    fill: lightsteelblue;
+    fill-opacity: 0.5;
+    stroke-width: 0;
+}
+
 .axis path,
 .axis line {
   fill: none;
@@ -233,6 +239,11 @@ div.tooltip-articles {
   fill-opacity: 0.1;
 }
 
+.tooltip-target-on {
+  fill: black;
+  fill-opacity: 0.25;
+}
+
 /*.svg-container {
   display: inline-block;
   position: relative;
@@ -274,4 +285,40 @@ div.tooltip-articles {
   display: inline-block;
   vertical-align: bottom;
   margin-bottom: 20px;
+}
+
+#search-history {
+  word-wrap: break-word;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.search-history-saveddate {
+  width: 12%;
+}
+
+.search-history-title {
+  width: 46%;
+}
+
+.search-history-title > a {
+  padding-right: 5px;
+}
+
+.search-history-source {
+  width: 20%;
+}
+
+.search-history-source > div {
+  padding-right: 20px;
+}
+
+.search-history-date {
+  width: 12%;
+}
+
+.search-history-remove {
+  width: 10%;
 }
