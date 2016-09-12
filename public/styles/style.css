@@ -242,8 +242,16 @@ div.tooltip {
   border-top: 1px solid silver;
 }
 
-#profile-heading {
+#profile-header > img {
+  width: 100px;
+  margin: 20px 20px 20px 0px;
+  border-radius: 8px;
+}
+
+#profile-title {
   display: inline-block;
   border-bottom: 1px solid grey;
   padding-bottom: 10px;
+  vertical-align: bottom;
+  margin-bottom: 20px;
 }
