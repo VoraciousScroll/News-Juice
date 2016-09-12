@@ -40,7 +40,7 @@ In new terminal tab:
 mongod
 ```
 
-### API Key Set-Up
+### API Key Set-Up:
 
 #### Set-Up Facebook Developer Key:
 1. Set-up [Facebook developer profile](https://developers.facebook.com/)  
