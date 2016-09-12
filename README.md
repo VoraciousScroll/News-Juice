@@ -52,13 +52,13 @@ mongod
 
 #### Set-Up Aylien Api key:
 
-Sign-up for [Aylien account](https://newsapi.aylien.com/signup) and obtain keys
+1. Sign-up for [Aylien account](https://newsapi.aylien.com/signup) and obtain keys
 
 #### Save key.js file:
 
-Open keys.example.js file  
-Update Facebook and Aylien keys   
-Save keys.example.js to keys.js  
+1. Open keys.example.js file
+1. Update Facebook and Aylien keys
+1. Save keys.example.js to keys.js  
 
 
 <!-- ### Roadmap -->
