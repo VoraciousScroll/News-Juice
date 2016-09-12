@@ -31,6 +31,11 @@ h2 > a:hover {
   color: black;
 }
 
+h3 {
+  font-size: 26px;
+  font-family: 'EB Garamond', serif;
+}
+
 .link {
   cursor: pointer;
 }
@@ -60,7 +65,6 @@ h2 > a:hover {
 }
 
 #top-trends-div > h3 {
-  font-size: 26px;
   padding-left: 5px;
   margin-bottom: 22px;
 }
@@ -239,19 +243,21 @@ div.tooltip {
 
 #profile-page {
   margin-top: 30px;
+}
+
+#profile-header {
   border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
 }
 
 #profile-header > img {
-  width: 100px;
-  margin: 20px 20px 20px 0px;
+  width: 95px;
+  margin: 20px 20px 20px 0;
   border-radius: 8px;
 }
 
 #profile-title {
   display: inline-block;
-  border-bottom: 1px solid grey;
-  padding-bottom: 10px;
   vertical-align: bottom;
   margin-bottom: 20px;
 }
