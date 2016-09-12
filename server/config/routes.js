@@ -41,7 +41,7 @@ module.exports = function(app, express) {
       // Successful authentication, redirect home.
         res.cookie('authenticate', req.session.passport);
         // console.log('cookie being set', req.session.passport)
-        res.redirect('/');
+        res.redirect('/enter');
       });
 
   app.route('/results/:input')
