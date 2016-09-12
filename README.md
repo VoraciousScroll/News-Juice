@@ -40,7 +40,7 @@ In new terminal tab:
 ```sh
 mongod
 ```
-
+--
 ### API Key Set-Up:
 
 #### Set-Up Facebook Developer Key:
@@ -61,7 +61,7 @@ mongod
 * Update Facebook and Aylien keys
 * Save keys.example.js to keys.js  
 
-
+--
 ### Authors:
 
 * Julie Truong ([Gamerlazer](https://github.com/Gamerlazer))  
