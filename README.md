@@ -40,6 +40,10 @@ nodemon
 In new terminal tab:
 mongod
 ```
+In new terminal tab:
+```sh
+mongod
+```
 
 ### Roadmap
 
