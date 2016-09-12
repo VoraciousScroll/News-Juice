@@ -16,6 +16,11 @@ h1 > a:hover {
   color: black;
 }
 
+h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 30px;
+}
+
 h2 > a {
   text-decoration: none;
   color: black;
@@ -97,8 +102,6 @@ li.trend-listing {
 }
 
 .article-title {
-  font-family: 'EB Garamond', serif;
-  font-size: 30px;
   padding-right: 10px;
 }
 
@@ -112,10 +115,6 @@ li.trend-listing {
   font-family: 'EB Garamond', serif;
   font-size: 16px;
   padding: 5px 10px 7px 0px;
-}
-
-.article-source {
-
 }
 
 .article-body {
@@ -236,4 +235,15 @@ div.tooltip {
   display: inline-block;
   font-weight: bold;
   font-size: 2em;
+}
+
+#profile-page {
+  margin-top: 30px;
+  border-top: 1px solid silver;
+}
+
+#profile-heading {
+  display: inline-block;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
 }
