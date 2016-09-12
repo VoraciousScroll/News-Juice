@@ -22,17 +22,6 @@ HR47 Greenfield Project
 1. [Team](#team)
 1. [Authors](#authors)
 
-<<<<<<< HEAD
---
-=======
-
-## Usage
-
-> Some usage instructions
-
---
-
->>>>>>> ff17b35b1f63a453648c744f46ca7df8f86cacc7
 ## Development
 
 ### Installing Dependencies
