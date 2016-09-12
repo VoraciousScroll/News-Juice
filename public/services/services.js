@@ -56,16 +56,9 @@ angular.module('smartNews.services', ['ngCookies'])
       .attr('transform', 'translate(' + ((window.innerWidth - width) / 2) + ',0)')
       .classed("svg-content-responsive", true);
 
-
     // div element for tooltip
     var div = d3.select('#graph').append('div')
       .attr('class', 'tooltip')
-      .style('opacity', 0);
-
-    // div element for articles
-    var divArticles = d3.select('#graph').append('div')
-      // .attr('class', 'tooltip')
-      .attr('class', 'tooltip-articles')
       .style('opacity', 0);
 
     // format data
@@ -139,15 +132,6 @@ angular.module('smartNews.services', ['ngCookies'])
           .style('opacity', 0);
       })
       .on('click', function(d) {
-        divArticles.transition()
-          .duration(100)
-          .style('opacity', 0.75);
-        divArticles.html(
-            '<span class="tooltip-date">Stories published on ' + moment(d.date).format("MM/DD/YYYY") + ':</span><br/>' + '<div id="tooltip-article-link">' + '</div>'
-          )
-          .style('left', (d3.event.pageX) + 'px')
-          .style('top', (d3.event.pageY + 4) + 'px');
-
         var startDate = d.publishedAt.split('T')[0];
         selectedDate.startDate = new Date(startDate).toISOString();
         var endDate = new Date(startDate);
