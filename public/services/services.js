@@ -51,11 +51,16 @@ angular.module('smartNews.services', ['ngCookies'])
       .classed("svg-content-responsive", true);
 
 
-
     // div element for tooltip
     var div = d3.select('#graph').append('div')
       .attr('class', 'tooltip')
       .style('opacity', 0);
+
+    // div element for articles
+    var divArticles = d3.select('#graph').append('div')
+        // .attr('class', 'tooltip')
+        .attr('class', 'tooltip-articles')
+        .style('opacity', 0);
 
     // format data
     data.forEach(function(d) {
@@ -110,6 +115,39 @@ angular.module('smartNews.services', ['ngCookies'])
         div.transition()
           .duration(250)
           .style('opacity', 0);
+      })
+      .on('click', function(d) {
+        divArticles.transition()
+          .duration(100)
+          .style('opacity', 0.75);
+        divArticles.html(
+          '<span class="tooltip-date">Stories published on ' + moment(d.date).format("MM/DD/YYYY") + ':</span><br/>'
+          + '<div id="tooltip-article-link">' + '</div>'
+          )
+          .style('left', (d3.event.pageX) + 'px')
+          .style('top', (d3.event.pageY + 4) + 'px');
+
+        // var articleTooltip = function() {
+        //   // var startDate = d.publishedAt.split('T')[0] + 'T00:00:00.000Z';
+        //   // var endDate = startDate + '%2B24HOURS';
+        //   var startDate = '2016-06-27T00:00:00.000Z';
+        //   var endDate = '2016-06-28T00:00:00.000Z'
+        //   var url = '/seearticle?input=' + 'obama' + '&start=' + startDate + '&end=' + endDate;
+        //   console.log('articleTooltip function called, d=', d);
+        //   // console.log('start:', startDate, 'end:', endDate);
+        //   console.log(url);
+        //   return $http({
+        //     method: 'GET',
+        //     url: url
+        //   })
+        //   .then(function(response) {
+        //     console.log(response);
+        //     // response.data.stories.forEach(function(article) {
+        //     //   // set divArticles html
+        //     //   console.log(article);
+        //     // })
+        //   });
+        // }
       });
 
     // add x-axis labels
