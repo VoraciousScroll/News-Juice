@@ -9,6 +9,7 @@ HR47 Greenfield Project
   - __Scrum Master__: Sean Ng
   - __Development Team Members__: Evan Goss, Julie Truong
 
+--
 ## Table of Contents
 
 1. [Usage](#Usage)
@@ -18,13 +19,7 @@ HR47 Greenfield Project
 1. [Team](#team)
 1. [Authors](#authors)
 
-
-## Usage
-
-> Some usage instructions
-
 --
-
 ## Development
 
 ### Installing Dependencies
@@ -68,6 +63,13 @@ mongod
 * Sean Ng ([seanng](https://github.com/seanng))  
 * Evan Goss ([EvanGoss](https://github.com/EvanGoss))  
 * Nathanael Ligon ([nligon](https://github.com/nligon))  
+
+<!-- ## Usage
+
+> Some usage instructions
+
+-->
+
 
 <!-- ### Roadmap -->
 
