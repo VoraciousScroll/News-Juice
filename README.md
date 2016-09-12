@@ -44,22 +44,22 @@ mongod
 ### API Key Set-Up:
 
 #### Set-Up Facebook Developer Key:
-1. Set-up [Facebook developer profile](https://developers.facebook.com/)  
-1. Add a New App  
-1. Select website option
-1. Set Site URL: `http://localhost/3000`
-1. Under Settings -> app domain -> localhost
-1. Under Settings -> App Review -> Set App to live
+* Set-up [Facebook developer profile](https://developers.facebook.com/)  
+* Add a New App  
+* Select website option
+* Set Site URL: `http://localhost/3000`
+* Under Settings -> app domain -> localhost
+* Under Settings -> App Review -> Set App to live
 
 #### Set-Up Aylien Api key:
 
-1. Sign-up for [Aylien account](https://newsapi.aylien.com/signup) and obtain keys
+* Sign-up for [Aylien account](https://newsapi.aylien.com/signup) and obtain keys
 
 #### Save key.js file:
 
-1. Open keys.example.js file
-1. Update Facebook and Aylien keys
-1. Save keys.example.js to keys.js  
+* Open keys.example.js file
+* Update Facebook and Aylien keys
+* Save keys.example.js to keys.js  
 
 
 ### Authors:
