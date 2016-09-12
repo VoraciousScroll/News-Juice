@@ -1,4 +1,20 @@
-## Style Guide
+# Style Guide
+
+### Table of Contents
+1. [Enforcement](#enforcement)
+1. [Indentation](#indentation)
+1. [Variable names](#variable-names)
+1. [Language constructs](#language-constructs)
+1. [Semicolons](#semicolons)
+1. [Code density](#code-density)
+1. [Comments](#comments)
+1. [Padding and additional whitespace](#padding-and-additional-whitespace)
+1. [Working with files](#working-with-files)
+1. [Opening or closing too many blocks at once](#opening-or-closing-too-many-blocks-at-once)
+1. [Variable declaration](#variable-declaration)
+1. [Capital letters in variable names](#capital-letters-in-variable-names)
+1. [Minutia](#minutia)
+1. [HTML](#html)
 
 ### Enforcement
 The style guide that follows can be enforced in Sublime by installing ESLint and the Hack Reactor Labs ESLint configuration file per [these instructions](https://github.com/hackreactor-labs/eslint-config-hackreactor).
@@ -201,7 +217,7 @@ When writing any block of code that is logically subordinate to the line immedia
 * A good comment is often less effective than a good variable name.
 
 
-### Padding & additional whitespace
+### Padding and additional whitespace
 
 * Generally, we don't care where you put extra spaces, provided they are not distracting.
 * You may use it as padding for visual clarity. If you do though, make sure it's balanced on both sides.
