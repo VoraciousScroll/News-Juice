@@ -45,8 +45,8 @@ mongod
 #### Set-Up Facebook Developer Key:
 
 Set-up [Facebook developer profile](https://developers.facebook.com/)
-...Add a New App  
-...Select website option   
+⋅⋅⋅Add a New App  
+⋅⋅⋅Select website option   
 ...Set Site URL: http://localhost/3000  
 ...Under Settings -> app domain -> localhost 
 ...Under Settings -> App Review -> Set App to live
