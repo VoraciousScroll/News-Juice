@@ -51,19 +51,15 @@ Set Site URL: http://localhost/3000
 Under Settings -> app domain -> localhost 
 Under Settings -> App Review -> Set App to live
 
-Set-Up Aylien Api key:
+#### Set-Up Aylien Api key:
+
+Sign-up for [Aylien account](https://newsapi.aylien.com/signup) and obtain keys
+
+#### Save key.js file:
 
 Open keys.example.js file 
 Update Facebook and Aylien keys 
 Save keys.example.js to keys.js
-
-
-Save key.js file:
-
-Open keys.example.js file 
-Update Facebook and Aylien keys 
-Save keys.example.js to keys.js
-
 
 
 <!-- ### Roadmap -->
