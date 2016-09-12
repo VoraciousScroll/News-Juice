@@ -233,6 +233,11 @@ div.tooltip-articles {
   fill-opacity: 0.1;
 }
 
+.tooltip-target-on {
+  fill: black;
+  fill-opacity: 0.25;
+}
+
 /*.svg-container {
   display: inline-block;
   position: relative;
