@@ -34,6 +34,7 @@ From within the root directory:
 npm install
 nodemon
 ```
+
 In new terminal tab:
 ```sh
 mongod
@@ -41,12 +42,13 @@ mongod
 
 ### API Key Set-Up
 
-Set-Up Facebook Developer Key:
+#### Set-Up Facebook Developer Key:
 
-> Set-up [Facebook developer profile](https://developers.facebook.com/)
-> Update Facebook and Aylien keys 
-> Save keys.example.js to keys.js
-
+Set-up [Facebook developer profile](https://developers.facebook.com/)
+Add a New App
+Select website option 
+Set Site URL: http://localhost/3000
+Under settings -> app domain -> localhost
 
 Set-Up Aylien Api key:
 
