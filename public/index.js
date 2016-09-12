@@ -100,6 +100,7 @@ angular.module('smartNews', [
           $state.go('main.results', {input: $scope.searchinput, articleReceived: false})
           .then(function(){
             window.objWin = obj;
+            window.renderGraphWin = renderGraph;
             renderGraph(obj);
           });
         },
@@ -111,6 +112,5 @@ angular.module('smartNews', [
       $state.go('main.home');
     }
   };
-  window.renderGraphWin = renderGraph;
 
 });

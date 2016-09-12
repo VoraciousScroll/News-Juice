@@ -164,8 +164,7 @@ angular.module('smartNews.services', ['ngCookies'])
       .call(d3.axisLeft(y));
   };
 
-  // window.renderGraphWin = renderGraph;
-
+  return renderGraph;
 })
 
 .factory('isAuth', function($cookies) {
