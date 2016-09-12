@@ -14,7 +14,7 @@ HR47 Greenfield Project
 1. [Usage](#Usage)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [API Key Set-Up](#api-keys)
+    1. [API Key Set-Up](#API Key Set-Up)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
