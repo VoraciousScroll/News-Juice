@@ -185,6 +185,12 @@ li.trend-listing {
   stroke-width: 1.5px;
 }
 
+.datafill {
+    fill: lightsteelblue;
+    fill-opacity: 0.5;
+    stroke-width: 0;
+}
+
 .axis path,
 .axis line {
   fill: none;
