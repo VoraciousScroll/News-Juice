@@ -9,10 +9,7 @@ HR47 Greenfield Project
   - __Scrum Master__: Sean Ng
   - __Development Team Members__: Evan Goss, Julie Truong
 
-<<<<<<< HEAD
 --
-=======
->>>>>>> ff17b35b1f63a453648c744f46ca7df8f86cacc7
 ## Table of Contents
 
 1. [Usage](#Usage)
@@ -22,6 +19,7 @@ HR47 Greenfield Project
 1. [Team](#team)
 1. [Authors](#authors)
 
+--
 ## Development
 
 ### Installing Dependencies
@@ -37,6 +35,7 @@ In new terminal tab:
 ```sh
 mongod
 ```
+
 --
 ### API Key Set-Up:
 
