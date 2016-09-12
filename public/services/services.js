@@ -200,7 +200,20 @@ angular.module('smartNews.services', ['ngCookies'])
         console.log('success posting', data);
       });
   };
+})
 
+.factory('unsaveArticle', function($http) {
+  return function(article, cb) {
+    var url = '/unsavearticle/' + article._id;
+    $http({
+      method: 'DELETE',
+      url: url
+    })
+    .then(function(data){
+      console.log('success deleting', data);
+      cb();
+    });
+  };
 })
 
 .factory('getSavedSearches', function($http) {

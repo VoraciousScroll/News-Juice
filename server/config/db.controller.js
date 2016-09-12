@@ -6,5 +6,8 @@ module.exports = {
   },
   profile: {
     get: User.getArticles
+  },
+  unsaveArticle: {
+    delete: User.unsaveArticle
   }
 };
