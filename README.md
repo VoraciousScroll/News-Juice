@@ -45,10 +45,10 @@ mongod
 #### Set-Up Facebook Developer Key:
 
 Set-up [Facebook developer profile](https://developers.facebook.com/)
-Add a New App
-Select website option 
-Set Site URL: http://localhost/3000
-Under settings -> app domain -> localhost
+Add a New App  
+Select website option   
+Set Site URL: http://localhost/3000  
+Under settings -> app domain -> localhost  
 
 Set-Up Aylien Api key:
 
