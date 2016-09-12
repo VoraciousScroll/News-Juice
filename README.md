@@ -14,7 +14,7 @@ HR47 Greenfield Project
 1. [Usage](#Usage)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [API keys](#api-keys)
+    1. [API Key Set-Up](#api-keys)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
@@ -39,13 +39,13 @@ In new terminal tab:
 mongod
 ```
 
-### API keys
+### API Key Set-Up
 
 Set-Up Facebook Developer Key:
 
-Set-up [Facebook developer profile](https://developers.facebook.com/)
-Update Facebook and Aylien keys 
-Save keys.example.js to keys.js
+> Set-up [Facebook developer profile](https://developers.facebook.com/)
+> Update Facebook and Aylien keys 
+> Save keys.example.js to keys.js
 
 
 Set-Up Aylien Api key:
