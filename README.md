@@ -57,9 +57,9 @@ Sign-up for [Aylien account](https://newsapi.aylien.com/signup) and obtain keys
 
 #### Save key.js file:
 
-Open keys.example.js file 
-Update Facebook and Aylien keys 
-Save keys.example.js to keys.js
+Open keys.example.js file  
+Update Facebook and Aylien keys   
+Save keys.example.js to keys.js  
 
 
 <!-- ### Roadmap -->
