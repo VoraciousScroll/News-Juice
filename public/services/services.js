@@ -164,7 +164,8 @@ angular.module('smartNews.services', ['ngCookies'])
     })
     .then(function(data){
       data.data.forEach(function(e){
-        e.formattedPublishDate = moment(e.publishDate).format('MMM DD YYYY, h:mma');
+        e.formattedPublishDate = moment(e.publishDate).format('MMM DD YYYY');
+        e.formattedSavedDate = moment(e.savedDate).format('MMM DD YYYY');
       });
       cb(data.data);
     });

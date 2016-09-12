@@ -7,7 +7,15 @@ angular.module('smartNews.profile', ['smartNews.services'])
   $scope.user = isAuth();
 
   getSavedSearches(function(resp){
+    console.log(resp);
+    resp.sort(function(a, b){
+      return a.savedDate - b.savedDate;
+    });
     $scope.searchHistory = resp;
   });
+
+  $scope.unsave = function(article){
+    console.log(article)
+  };
 
 }]);
