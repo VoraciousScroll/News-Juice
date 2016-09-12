@@ -65,6 +65,14 @@ h3 {
   cursor: pointer;
 }
 
+/* Navbar */
+
+.navbar {
+  margin-bottom: 5px;
+}
+
+/* Home */
+
 .primaryImg {
   max-width: 200px;
   border: 10px 10px;
@@ -72,7 +80,7 @@ h3 {
 }
 
 .upperdiv.container {
-  margin: 30px auto;
+  margin: 30px auto 20px auto;
 }
 
 #home-left-div {
@@ -143,7 +151,7 @@ li.trend-listing {
 .article-subheading {
   font-family: 'EB Garamond', serif;
   font-size: 16px;
-  padding: 5px 10px 7px 0px;
+  padding: 10px 10px 12px 0px;
 }
 
 .article-body {
