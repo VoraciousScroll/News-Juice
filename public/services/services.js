@@ -12,7 +12,7 @@ angular.module('smartNews.services', ['ngCookies'])
 
 .factory('renderGraph', function() {
   var selectedDate = {
-    startDate: 'NOW-2DAYS', 
+    startDate: 'NOW-2DAYS',
     endDate: 'NOW'
   };
 
@@ -152,7 +152,7 @@ angular.module('smartNews.services', ['ngCookies'])
         var endDate = new Date(startDate);
         endDate = endDate.setDate(endDate.getDate() + 1);
         selectedDate.endDate = new Date(endDate).toISOString();
-        
+
       });
 
     // add x-axis labels
@@ -169,7 +169,7 @@ angular.module('smartNews.services', ['ngCookies'])
   };
 
   return {
-    renderGraph: renderGraph, 
+    renderGraph: renderGraph,
     selectedDate: selectedDate
   };
 })
@@ -194,7 +194,7 @@ angular.module('smartNews.services', ['ngCookies'])
     $http({
         method: 'POST',
         data: article,
-        url: '/saveArticle'
+        url: '/article'
       })
       .then(function(data) {
         console.log('success posting', data);
