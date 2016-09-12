@@ -3,7 +3,7 @@
 ### Table of Contents
 1. [Enforcement](#Enforcement)
 1. [Indentation](#Indentation)
-1. [Variable names](#Variable-names)
+1. [Variable names](#variable-names)
 1. [Language constructs](#Language-constructs)
 1. [Semicolons](#Semicolons)
 1. [Code density](#Code-density)
