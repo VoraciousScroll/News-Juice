@@ -69,7 +69,7 @@ mongod
 --
 ### Authors:
 
-* Julie Truong ([TruongJulie](https://github.com/TruongJulie))  
+* Julie Truong ([Truong-Julie](https://github.com/Truong-Julie))   
 * Sean Ng ([seanng](https://github.com/seanng))  
 * Evan Goss ([EvanGoss](https://github.com/EvanGoss))  
 * Nathanael Ligon ([nligon](https://github.com/nligon))  
