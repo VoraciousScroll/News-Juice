@@ -1,8 +1,6 @@
 [![Build Status](https://travis-ci.org/VoraciousScroll/VoraciousScroll.svg?branch=master)](https://travis-ci.org/VoraciousScroll/VoraciousScroll)
 
 # News Juice
-HR47 Greenfield Project
-
 ## Team
 
   - __Product Owner__: Nathanael Ligon
